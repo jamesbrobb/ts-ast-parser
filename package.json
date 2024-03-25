@@ -1,0 +1,28 @@
+{
+  "name": "ts-ast-parser",
+  "version": "1.0.0",
+  "description": "A TS AST parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.json && copyfiles ./package.json ./README.md dist/@jamesbenrobb/ts-ast-parser/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesbrobb/ts-ast-parser.git"
+  },
+  "keywords": [
+    "typescript",
+    "ast"
+  ],
+  "author": "james robb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesbrobb/ts-ast-parser/issues"
+  },
+  "homepage": "https://github.com/jamesbrobb/ts-ast-parser#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "typescript": "^5.4.3"
+  }
+}
