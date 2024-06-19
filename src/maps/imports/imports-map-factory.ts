@@ -2,7 +2,7 @@ import * as ts from "typescript";
 import * as path from "path";
 
 import {PathResolutionMap, resolvePath} from "../../paths";
-import {Import, parseDeclaration} from "../../declarations";
+import {Import} from "../../declarations";
 import {walkNodeTree} from "../../utilities";
 import {ImportsMap, ImportsMapElement} from "./imports-map";
 import {DependencyMap} from "../dependencies/dependency-map";
@@ -59,8 +59,7 @@ function getImportDeclarations(sourceFile: ts.SourceFile, options?: ImportsMapFa
     .map((importDec) => {
 
       const imprt = walkNodeTree(importDec, sourceFile, {
-        ...options,
-        nodeParseFn: parseDeclaration
+        ...options
       }) as Import;
 
       return [importDec, imprt]

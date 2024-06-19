@@ -1,0 +1,493 @@
+{
+  "kind": "sourceFile",
+  "fileName": "chart.directive.ts",
+  "path": "/Users/James/WebstormProjects/ngx-lightweight-charts/library/src/lib/ng/charts",
+  "imports": [
+    {
+      "name": "Directive",
+      "module": "@angular/core",
+      "resolvedModulePath": "@angular/core",
+      "convertedModulePath": "https://angular.dev/api/core/Directive"
+    },
+    {
+      "name": "ElementRef",
+      "module": "@angular/core",
+      "resolvedModulePath": "@angular/core",
+      "convertedModulePath": "https://angular.dev/api/core/ElementRef"
+    },
+    {
+      "name": "OnInit",
+      "module": "@angular/core",
+      "resolvedModulePath": "@angular/core",
+      "convertedModulePath": "https://angular.dev/api/core/OnInit"
+    },
+    {
+      "name": "OnDestroy",
+      "module": "@angular/core",
+      "resolvedModulePath": "@angular/core",
+      "convertedModulePath": "https://angular.dev/api/core/OnDestroy"
+    },
+    {
+      "name": "inject",
+      "module": "@angular/core",
+      "resolvedModulePath": "@angular/core",
+      "convertedModulePath": "https://angular.dev/api/core/inject"
+    },
+    {
+      "name": "input",
+      "module": "@angular/core",
+      "resolvedModulePath": "@angular/core",
+      "convertedModulePath": "https://angular.dev/api/core/input"
+    },
+    {
+      "name": "effect",
+      "module": "@angular/core",
+      "resolvedModulePath": "@angular/core",
+      "convertedModulePath": "https://angular.dev/api/core/effect"
+    },
+    {
+      "name": "ChartOptions",
+      "module": "lightweight-charts",
+      "resolvedModulePath": "lightweight-charts",
+      "convertedModulePath": "https://tradingview.github.io/lightweight-charts/docs/api#chartoptions"
+    },
+    {
+      "name": "ColorType",
+      "module": "lightweight-charts",
+      "resolvedModulePath": "lightweight-charts",
+      "convertedModulePath": "https://tradingview.github.io/lightweight-charts/docs/api/enums/colortype"
+    },
+    {
+      "name": "DeepPartial",
+      "module": "lightweight-charts",
+      "resolvedModulePath": "lightweight-charts",
+      "convertedModulePath": "https://tradingview.github.io/lightweight-charts/docs/api#deeppartial"
+    },
+    {
+      "name": "LineStyle",
+      "module": "lightweight-charts",
+      "resolvedModulePath": "lightweight-charts",
+      "convertedModulePath": "https://tradingview.github.io/lightweight-charts/docs/api/enums/linestyle"
+    },
+    {
+      "name": "SeriesDataItemTypeMap",
+      "module": "lightweight-charts",
+      "resolvedModulePath": "lightweight-charts",
+      "convertedModulePath": "https://tradingview.github.io/lightweight-charts/docs/api/interfaces/seriesdataitemtypemap"
+    },
+    {
+      "name": "SeriesPartialOptionsMap",
+      "module": "lightweight-charts",
+      "resolvedModulePath": "lightweight-charts",
+      "convertedModulePath": "https://tradingview.github.io/lightweight-charts/docs/api/interfaces/seriespartialoptionsmap"
+    },
+    {
+      "name": "SeriesType",
+      "module": "lightweight-charts",
+      "resolvedModulePath": "lightweight-charts",
+      "convertedModulePath": "https://tradingview.github.io/lightweight-charts/docs/api#seriestype"
+    },
+    {
+      "name": "TVChart",
+      "module": "../../core",
+      "resolvedModulePath": "Users/James/WebstormProjects/ngx-lightweight-charts/library/src/lib/core"
+    },
+    {
+      "name": "tvChartProviderWithExistenceCheck",
+      "module": "../providers/tv-chart.provider",
+      "resolvedModulePath": "Users/James/WebstormProjects/ngx-lightweight-charts/library/src/lib/ng/providers/tv-chart.provider"
+    },
+    {
+      "name": "TVChartInputsDirective",
+      "module": "./chart-inputs.directive",
+      "resolvedModulePath": "Users/James/WebstormProjects/ngx-lightweight-charts/library/src/lib/ng/charts/chart-inputs.directive"
+    },
+    {
+      "name": "tvChartInputsDirectiveHostDef",
+      "module": "./chart-inputs.directive",
+      "resolvedModulePath": "Users/James/WebstormProjects/ngx-lightweight-charts/library/src/lib/ng/charts/chart-inputs.directive"
+    },
+    {
+      "name": "tvChartOutputsDirectiveHostDef",
+      "module": "./charts-outputs.directive",
+      "resolvedModulePath": "Users/James/WebstormProjects/ngx-lightweight-charts/library/src/lib/ng/charts/charts-outputs.directive"
+    }
+  ],
+  "exports": [
+    {
+      "kind": "variable",
+      "name": "DEFAULT_CHART_OPTIONS",
+      "type": "DeepPartial<ChartOptions>",
+      "initializer": "{\n  height: 300,\n  autoSize: true,\n  timeScale: {\n    fixRightEdge: true,\n    lockVisibleTimeRangeOnResize: true,\n    timeVisible: true,\n    secondsVisible: false,\n  },\n  crosshair: {\n    vertLine: {\n      style: LineStyle.LargeDashed\n    },\n    horzLine: {\n      style: LineStyle.LargeDashed\n    },\n  }\n}",
+      "raw": "DEFAULT_CHART_OPTIONS: DeepPartial<ChartOptions> = {\n  height: 300,\n  autoSize: true,\n  timeScale: {\n    fixRightEdge: true,\n    lockVisibleTimeRangeOnResize: true,\n    timeVisible: true,\n    secondsVisible: false,\n  },\n  crosshair: {\n    vertLine: {\n      style: LineStyle.LargeDashed\n    },\n    horzLine: {\n      style: LineStyle.LargeDashed\n    },\n  }\n}"
+    },
+    {
+      "kind": "variable",
+      "name": "DEFAULT_DARK_CHART_OPTIONS",
+      "type": "DeepPartial<ChartOptions>",
+      "initializer": "deepmerge(\n  DEFAULT_CHART_OPTIONS, {\n  layout: {\n    background: { type: ColorType.Solid, color: #222 },\n    textColor: #DDD,\n  },\n  grid: {\n    vertLines: { color: #444 },\n    horzLines: { color: #444 },\n  },\n  timeScale: {\n    borderColor: #555,\n  },\n  leftPriceScale: {\n    borderColor: #555\n  },\n  rightPriceScale: {\n    borderColor: #555\n  },\n  crosshair: {\n    vertLine: {\n      color: #fff,\n      labelBackgroundColor: #aaa,\n      style: LineStyle.SparseDotted\n    },\n    horzLine: {\n      color: #fff,\n      labelBackgroundColor: #aaa,\n      style: LineStyle.SparseDotted\n    },\n  }\n})",
+      "raw": "DEFAULT_DARK_CHART_OPTIONS: DeepPartial<ChartOptions> = deepmerge(\n  DEFAULT_CHART_OPTIONS, {\n  layout: {\n    background: { type: ColorType.Solid, color: '#222' },\n    textColor: '#DDD',\n  },\n  grid: {\n    vertLines: { color: '#444' },\n    horzLines: { color: '#444' },\n  },\n  timeScale: {\n    borderColor: '#555',\n  },\n  leftPriceScale: {\n    borderColor: '#555'\n  },\n  rightPriceScale: {\n    borderColor: '#555'\n  },\n  crosshair: {\n    vertLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    },\n    horzLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    },\n  }\n})"
+    },
+    {
+      "kind": "class",
+      "name": "TVChartDirective",
+      "decorators": [
+        {
+          "kind": "decorator",
+          "type": "Directive",
+          "metadata": {
+            "selector": "[tvChart]",
+            "standalone": "true",
+            "providers": "[tvChartProviderWithExistenceCheck]",
+            "hostDirectives": "[\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]"
+          },
+          "signature": "@Directive({selector: [tvChart], standalone: true, providers: [tvChartProviderWithExistenceCheck], hostDirectives: [\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]})",
+          "raw": "@Directive({\n  selector: '[tvChart]',\n  standalone: true,\n  providers: [tvChartProviderWithExistenceCheck],\n  hostDirectives: [\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]\n})"
+        }
+      ],
+      "keywords": [
+        "export"
+      ],
+      "isUI": true,
+      "children": [
+        {
+          "kind": "decorator",
+          "type": "Directive",
+          "metadata": {
+            "selector": "[tvChart]",
+            "standalone": "true",
+            "providers": "[tvChartProviderWithExistenceCheck]",
+            "hostDirectives": "[\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]"
+          },
+          "signature": "@Directive({selector: [tvChart], standalone: true, providers: [tvChartProviderWithExistenceCheck], hostDirectives: [\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]})",
+          "raw": "@Directive({\n  selector: '[tvChart]',\n  standalone: true,\n  providers: [tvChartProviderWithExistenceCheck],\n  hostDirectives: [\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]\n})"
+        },
+        {
+          "raw": "export",
+          "kind": 95,
+          "type": "ExportKeyword"
+        },
+        "TVChartDirective",
+        {
+          "kind": "typeParameter",
+          "name": "T",
+          "constraint": "SeriesType",
+          "raw": "T extends SeriesType",
+          "children": [
+            "T",
+            {
+              "kind": "typeReference",
+              "name": "SeriesType",
+              "raw": "SeriesType"
+            }
+          ]
+        },
+        {
+          "kind": "typeParameter",
+          "name": "HorzScaleItem",
+          "raw": "HorzScaleItem",
+          "children": [
+            "HorzScaleItem"
+          ]
+        },
+        {
+          "kind": "heritage",
+          "keyword": "implements",
+          "types": [
+            "OnInit",
+            "OnDestroy"
+          ]
+        },
+        {
+          "kind": "property",
+          "name": "type",
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": "input.required<T>({alias: tvChart})",
+          "signature": "type = input.required<T>({alias: tvChart})",
+          "raw": "type = input.required<T>({alias: 'tvChart'});",
+          "children": [
+            "type",
+            {
+              "raw": "input.required<T>({alias: 'tvChart'})",
+              "kind": 213,
+              "type": "CallExpression",
+              "children": [
+                {
+                  "raw": "input.required",
+                  "kind": 211,
+                  "type": "PropertyAccessExpression",
+                  "children": [
+                    "input",
+                    "required"
+                  ]
+                },
+                {
+                  "kind": "typeReference",
+                  "name": "T",
+                  "raw": "T"
+                },
+                {
+                  "raw": "{alias: 'tvChart'}",
+                  "kind": 210,
+                  "type": "ObjectLiteralExpression",
+                  "children": [
+                    {
+                      "raw": "alias: 'tvChart'",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "alias",
+                        "tvChart"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "property",
+          "name": "seriesOptions",
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": "input<SeriesPartialOptionsMap[T]>()",
+          "signature": "seriesOptions = input<SeriesPartialOptionsMap[T]>()",
+          "raw": "seriesOptions = input<SeriesPartialOptionsMap[T]>();",
+          "children": [
+            "seriesOptions",
+            {
+              "raw": "input<SeriesPartialOptionsMap[T]>()",
+              "kind": 213,
+              "type": "CallExpression",
+              "children": [
+                "input",
+                {
+                  "raw": "SeriesPartialOptionsMap[T]",
+                  "kind": 199,
+                  "type": "IndexedAccessType",
+                  "children": [
+                    {
+                      "kind": "typeReference",
+                      "name": "SeriesPartialOptionsMap",
+                      "raw": "SeriesPartialOptionsMap"
+                    },
+                    {
+                      "kind": "typeReference",
+                      "name": "T",
+                      "raw": "T"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "property",
+          "name": "data",
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": "input<SeriesDataItemTypeMap<HorzScaleItem>[T][]>()",
+          "signature": "data = input<SeriesDataItemTypeMap<HorzScaleItem>[T][]>()",
+          "raw": "data = input<SeriesDataItemTypeMap<HorzScaleItem>[T][]>();",
+          "children": [
+            "data",
+            {
+              "raw": "input<SeriesDataItemTypeMap<HorzScaleItem>[T][]>()",
+              "kind": 213,
+              "type": "CallExpression",
+              "children": [
+                "input",
+                {
+                  "raw": "SeriesDataItemTypeMap<HorzScaleItem>[T][]",
+                  "kind": 188,
+                  "type": "ArrayType",
+                  "children": [
+                    {
+                      "raw": "SeriesDataItemTypeMap<HorzScaleItem>[T]",
+                      "kind": 199,
+                      "type": "IndexedAccessType",
+                      "children": [
+                        {
+                          "kind": "typeReference",
+                          "name": "SeriesDataItemTypeMap",
+                          "raw": "SeriesDataItemTypeMap<HorzScaleItem>"
+                        },
+                        {
+                          "kind": "typeReference",
+                          "name": "T",
+                          "raw": "T"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "property",
+          "name": "#inputs",
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": "inject(TVChartInputsDirective)",
+          "signature": "readonly #inputs = inject(TVChartInputsDirective)",
+          "raw": "readonly #inputs = inject(TVChartInputsDirective);",
+          "keywords": [
+            "readonly"
+          ],
+          "children": [
+            {
+              "raw": "readonly",
+              "kind": 148,
+              "type": "ReadonlyKeyword"
+            },
+            {
+              "raw": "#inputs",
+              "kind": 81,
+              "type": "PrivateIdentifier"
+            },
+            {
+              "raw": "inject(TVChartInputsDirective)",
+              "kind": 213,
+              "type": "CallExpression",
+              "children": [
+                "inject",
+                "TVChartInputsDirective"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "property",
+          "name": "#element",
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": "inject(ElementRef<HTMLElement>).nativeElement",
+          "signature": "readonly #element = inject(ElementRef<HTMLElement>).nativeElement",
+          "raw": "readonly #element = inject(ElementRef<HTMLElement>).nativeElement;",
+          "keywords": [
+            "readonly"
+          ],
+          "children": [
+            {
+              "raw": "readonly",
+              "kind": 148,
+              "type": "ReadonlyKeyword"
+            },
+            {
+              "raw": "#element",
+              "kind": 81,
+              "type": "PrivateIdentifier"
+            },
+            {
+              "raw": "inject(ElementRef<HTMLElement>).nativeElement",
+              "kind": 211,
+              "type": "PropertyAccessExpression",
+              "children": [
+                {
+                  "raw": "inject(ElementRef<HTMLElement>)",
+                  "kind": 213,
+                  "type": "CallExpression",
+                  "children": [
+                    "inject",
+                    {
+                      "kind": "expressionWithTypeArguments",
+                      "expression": "ElementRef",
+                      "typeArguments": [
+                        "HTMLElement"
+                      ],
+                      "raw": "ElementRef<HTMLElement>",
+                      "children": [
+                        "ElementRef",
+                        {
+                          "kind": "typeReference",
+                          "name": "HTMLElement",
+                          "raw": "HTMLElement"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "nativeElement"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "property",
+          "name": "#chart",
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": "inject(TVChart<T, HorzScaleItem>)",
+          "signature": "readonly #chart = inject(TVChart<T, HorzScaleItem>)",
+          "raw": "readonly #chart = inject(TVChart<T, HorzScaleItem>);",
+          "keywords": [
+            "readonly"
+          ],
+          "children": [
+            {
+              "raw": "readonly",
+              "kind": 148,
+              "type": "ReadonlyKeyword"
+            },
+            {
+              "raw": "#chart",
+              "kind": 81,
+              "type": "PrivateIdentifier"
+            },
+            {
+              "raw": "inject(TVChart<T, HorzScaleItem>)",
+              "kind": 213,
+              "type": "CallExpression",
+              "children": [
+                "inject",
+                {
+                  "kind": "expressionWithTypeArguments",
+                  "expression": "TVChart",
+                  "typeArguments": [
+                    "T",
+                    "HorzScaleItem"
+                  ],
+                  "raw": "TVChart<T, HorzScaleItem>",
+                  "children": [
+                    "TVChart",
+                    {
+                      "kind": "typeReference",
+                      "name": "T",
+                      "raw": "T"
+                    },
+                    {
+                      "kind": "typeReference",
+                      "name": "HorzScaleItem",
+                      "raw": "HorzScaleItem"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "parameters": []
+        },
+        {
+          "kind": "method",
+          "name": "ngOnInit",
+          "parameters": [],
+          "signature": "ngOnInit(): void"
+        },
+        {
+          "kind": "method",
+          "name": "ngOnDestroy",
+          "parameters": [],
+          "signature": "ngOnDestroy(): void"
+        }
+      ]
+    }
+  ]
+}

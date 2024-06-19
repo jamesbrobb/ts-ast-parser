@@ -9,16 +9,17 @@ import {
   parseSourceFiles
 } from "./utilities";
 import {createDependencyMap} from "./maps";
+import {SyntaxKindToTypeMap} from "./declarations";
 
 
-export type ParseOptions<R> = {
+export type ParseOptions<M extends SyntaxKindToTypeMap<unknown>> = {
   pathHandlers?: PathHandler[],
   sourcePath?: string,
   walk?: boolean
-} & ParseNodeOptions<R>
+} & ParseNodeOptions<M>
 
 
-export function parse<R>(options?: ParseOptions<R>): SourceFileDeclaration[] | SourceFileDeclaration {
+export function parse<M extends SyntaxKindToTypeMap<unknown>>(options?: ParseOptions<M>): SourceFileDeclaration[] | SourceFileDeclaration {
 
   const config = getParsedTSConfig(),
     entryFile = config.fileNames[0],
@@ -28,11 +29,11 @@ export function parse<R>(options?: ParseOptions<R>): SourceFileDeclaration[] | S
     pathMaps: PathParserMaps = buildPathMaps(...pathHandlers);
 
   const dependencyMap = createDependencyMap(program, {
-    debug: false,
+    debug: options?.debug || false,
     ...pathMaps
   });
 
-  const sfParseOptions: ParseSourceFileOptions<R> = {
+  const sfParseOptions: ParseSourceFileOptions<M> = {
     ...options,
     ...pathMaps,
     dependencyMap

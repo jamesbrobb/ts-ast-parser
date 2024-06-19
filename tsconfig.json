@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": "tsconfig",
-    "lib": ["es2020", "dom"],
+    "lib": ["ES2022", "dom"],
     "declaration": true,
-    "module": "commonjs",
+    "module": "ES2022",
     "moduleResolution": "node",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
@@ -17,8 +17,13 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es6",
-    "types": ["node"]
+    "target": "ES2022",
+    "types": ["node"],
+    "paths": {
+      "@jamesbenrobb/ts-ast-parser": [
+        "dist/@jamesbenrobb/ts-ast-parser/src"
+      ]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["src/*/files/**/*"]

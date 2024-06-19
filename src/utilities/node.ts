@@ -1,4 +1,11 @@
 import * as ts from "typescript";
+import {
+  DeclarationParseFunctionMap,
+  defaultDeclarationFunctionMap, GetDeclarationTypeForSyntaxKind, NoParseFunctionReturnType,
+  parseDeclaration,
+  SyntaxKindToTypeMap
+} from "../declarations";
+import {SyntaxKindToDeclarationTypeMap} from "../declarations/declaration-type-map";
 
 
 export type ParsedNodeResult<R> = {result: R, exit: boolean};
@@ -7,20 +14,22 @@ export function isParsedNodeResult<R>(result: any): result is ParsedNodeResult<R
   return typeof result === 'object' && 'result' in result && 'exit' in result;
 }
 
-export type ParseNodeFunc<R> = (node: ts.Node, sourceFile: ts.SourceFile, debug?: boolean) => R | ParsedNodeResult<R>;
-
-export type ParseNodeOptions<R> = {
-  nodeParseFn?: ParseNodeFunc<R>,
+export type ParseNodeOptions<M extends SyntaxKindToTypeMap<unknown>> = {
+  declarationParseFunctionMap?: DeclarationParseFunctionMap<M>
   returnArray?: boolean,
   lazy?: boolean,
   debug?: boolean
 }
 
 
-export function walkNodeTree<R = ts.Node>(node: ts.Node, sourceFile: ts.SourceFile, options?: ParseNodeOptions<R>): any[] | Record<PropertyKey, unknown> {
+export function walkNodeTree<
+  N extends ts.Node,
+  M extends SyntaxKindToTypeMap<unknown> = SyntaxKindToDeclarationTypeMap,
+  R = GetDeclarationTypeForSyntaxKind<N['kind'], M> | NoParseFunctionReturnType,
+>(node: N, sourceFile: ts.SourceFile, options?: ParseNodeOptions<M>): any[] | Record<PropertyKey, unknown> {
 
-  const parseFn: ParseNodeFunc<R> = options?.nodeParseFn || ((node: ts.Node): R => node as R),
-    children: any[] = [];
+  const declarationParseFunctionMap = options?.declarationParseFunctionMap || defaultDeclarationFunctionMap,
+      children: any[] = [];
 
   let parsed: R | (() => R),
     exit = false;
@@ -35,9 +44,11 @@ export function walkNodeTree<R = ts.Node>(node: ts.Node, sourceFile: ts.SourceFi
 
         if(!parsedNode) {
 
-          const res = parseFn(node, sourceFile, options?.debug);
+          const res = parseDeclaration<N, M>(
+              node, sourceFile, declarationParseFunctionMap as any, options?.debug
+          );
 
-          parsedNode = isParsedNodeResult<R>(res) ? res.result : res;
+          parsedNode = (isParsedNodeResult<R>(res) ? res.result : res) as any;
         }
 
         return parsedNode;
@@ -46,13 +57,13 @@ export function walkNodeTree<R = ts.Node>(node: ts.Node, sourceFile: ts.SourceFi
 
   } else {
 
-    const res = parseFn(node, sourceFile, options?.debug);
+    const res = parseDeclaration(node, sourceFile, declarationParseFunctionMap as any, options?.debug);
 
     if(isParsedNodeResult<R>(res)) {
       parsed = res.result;
       exit = res.exit;
     } else {
-      parsed = res;
+      parsed = res as any;
     }
   }
 

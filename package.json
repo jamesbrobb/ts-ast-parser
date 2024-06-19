@@ -1,6 +1,6 @@
 {
   "name": "ts-ast-parser",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A TS AST parser",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,8 @@
   "homepage": "https://github.com/jamesbrobb/ts-ast-parser#readme",
   "devDependencies": {
     "@types/node": "^20.11.30",
+    "copyfiles": "^2.4.1",
+    "tsx": "^4.15.6",
     "typescript": "^5.4.3"
   }
 }

@@ -5,7 +5,7 @@ import {logResults} from "./log";
 import {ParseNodeOptions, walkNodeTree} from "./node";
 import {AdditionalMapProps, createImportsMap, ImportsMapFactoryOptions} from "../maps";
 import {SourceFileDeclaration} from "../declarations/kinds/source-file";
-import {DeclarationKind} from "../declarations";
+import {DeclarationKind, SyntaxKindToTypeMap} from "../declarations";
 
 
 export function getSourceFile(program: ts.Program, sourcePath: string): ts.SourceFile {
@@ -54,14 +54,14 @@ export function getExportedDeclarationsFromSource(
 }
 
 
-export type ParseSourceFileOptions<R, O extends AdditionalMapProps = {}> =
-  ParseNodeOptions<R> & ImportsMapFactoryOptions<O>
+export type ParseSourceFileOptions<M extends SyntaxKindToTypeMap<unknown>, O extends AdditionalMapProps = {}> =
+  ParseNodeOptions<M> & ImportsMapFactoryOptions<O>
 
 
-export function parseSourceFile<R, O extends AdditionalMapProps = {}>(
+export function parseSourceFile<M extends SyntaxKindToTypeMap<unknown>, O extends AdditionalMapProps = {}>(
   program: ts.Program,
   source: ts.SourceFile | string,
-  options?: ParseSourceFileOptions<R, O>
+  options?: ParseSourceFileOptions<M, O>
 ): SourceFileDeclaration {
 
   const sourceFile: ts.SourceFile = typeof source === 'string' ? getSourceFile(program, source) : source;
@@ -84,10 +84,10 @@ export function parseSourceFile<R, O extends AdditionalMapProps = {}>(
   }
 }
 
-export function parseSourceFiles<R = ts.Node>(
+export function parseSourceFiles<M extends SyntaxKindToTypeMap<unknown>>(
   program: ts.Program,
   entryPoint: string,
-  options?: ParseNodeOptions<R>
+  options?: ParseNodeOptions<M>
 ) {
   const basePath = path.dirname(entryPoint),
     ignoreFiles = ['index.ts', 'public-api.ts', '.d.ts', '.spec.ts', '.mock.ts'];
