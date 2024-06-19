@@ -5,3 +5,4 @@ export * from './rxjs';
 export * from './node-modules';
 export * from './common';
 export * from './path-handler';
+export * from './lightweight-charts';
