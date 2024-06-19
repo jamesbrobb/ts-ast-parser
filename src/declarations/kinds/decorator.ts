@@ -38,12 +38,17 @@ export function getDecorator<T extends Decorator>(node: ts.Decorator, sourceFile
     throw new Error("Decorator Node is not a call like expression");
   }
 
-  if (!ts.isCallExpression(node.expression)) {
-    throw new Error("Decorator Node.expression is not a call expression");
+  let type: string = "",
+    metadata: Decorator['metadata'] = {};
+
+  if(ts.isIdentifier(node.expression)) {
+    type = node.expression.getText(sourceFile);
   }
 
-  const type = node.expression.expression.getText(sourceFile),
+  if (ts.isCallExpression(node.expression)) {
+    type = node.expression.expression.getText(sourceFile);
     metadata = getDecoratorMetadata<T['metadata']>(node.expression, sourceFile);
+  }
 
   const decorator = {
     kind: DeclarationKind.DECORATOR,

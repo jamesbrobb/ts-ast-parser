@@ -54,7 +54,6 @@ export function getModifiers(node: ts.Node, sourceFile: ts.SourceFile): Modifier
     }
   })
 
-
   return modifiers;
 }
 

@@ -1,7 +1,7 @@
 import * as ts from "typescript";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
-import {Modifiers} from "./modifiers";
+import {getModifiers, Modifiers} from "./modifiers";
 import {getText} from "../../utilities";
 import {Decorator} from "./decorator";
 import {TypeParameter} from "./type";
@@ -23,9 +23,10 @@ export type ClassDeclaration = {
 
 
 export function getClassDeclaration(node: ts.ClassDeclaration, sourceFile: ts.SourceFile): ClassDeclaration {
-
+    const modifiers = getModifiers(node, sourceFile) || {};
     return {
         kind: DeclarationKind.CLASS,
         name: node.name ? getText(node.name, sourceFile) : 'Class name not found',
+        ...modifiers
     }
 }

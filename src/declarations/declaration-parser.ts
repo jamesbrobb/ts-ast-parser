@@ -1,6 +1,12 @@
 import * as ts from "typescript";
 
-import {defaultDeclarationFunctionMap} from "./default-function-map";
+//import {defaultDeclarationFunctionMap} from "./default-function-map";
+import {
+  DeclarationParseFunctionMap,
+  GetDeclarationFn,
+  GetDeclarationTypeForSyntaxKind,
+  SyntaxKindToTypeMap
+} from "./declaration-types";
 
 
 export type NoParseFunctionReturnType = {
@@ -10,13 +16,14 @@ export type NoParseFunctionReturnType = {
 }
 
 
-export function parseDeclaration<N extends ts.Node>(
+export function parseDeclaration<N extends ts.Node, M extends SyntaxKindToTypeMap<unknown>>(
   node: N,
   sourceFile: ts.SourceFile,
+  declarationParseFunctionMap: DeclarationParseFunctionMap<M>,
   debug?: boolean
-): unknown | NoParseFunctionReturnType { // GetDeclarationTypeForSyntaxKind<N['kind']>
+): GetDeclarationTypeForSyntaxKind<N['kind'], M> | NoParseFunctionReturnType {
 
-  const parseFunc = defaultDeclarationFunctionMap[node.kind];
+  const parseFunc: GetDeclarationFn<N['kind'], M> | undefined = declarationParseFunctionMap[node.kind];
 
   if(!parseFunc) {
     if(debug) {
