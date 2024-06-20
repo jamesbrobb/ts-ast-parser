@@ -3,6 +3,7 @@ import {getModifiers, Modifiers} from "./modifiers";
 import {getText} from "../../utilities";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
+import {Parser} from "../declaration-parser";
 
 
 export type EnumDeclaration = {
@@ -19,10 +20,10 @@ export type EnumMemberDeclaration = {
 } & Declaration<DeclarationKind.ENUM_MEMBER>
 
 
-export function getEnumDeclaration(node: ts.EnumDeclaration, sourceFile: ts.SourceFile): EnumDeclaration {
+export function getEnumDeclaration(node: ts.EnumDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): EnumDeclaration {
 
   const name = getText(node.name, sourceFile),
-    modifiers = getModifiers(node, sourceFile) || {},
+    modifiers = getModifiers(node, sourceFile, parser) || {},
     members = node.members.map(member => getEnumMemberDeclaration(member, sourceFile));
 
   return {

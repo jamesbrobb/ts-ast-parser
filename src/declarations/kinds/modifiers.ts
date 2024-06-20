@@ -1,5 +1,6 @@
 import * as ts from "typescript";
 import {Decorator, getDecorator} from "./decorator";
+import {Parser} from "../declaration-parser";
 
 
 export type ModifierKeywords = 'private' | 'protected' | 'public' | 'readonly' | 'static' | 'abstract' | 'async' | 'const' | 'declare' | 'default' | 'export';
@@ -26,7 +27,7 @@ const modifiersMap: {[key: number]: ModifierKeywords} = {
 }
 
 
-export function getModifiers(node: ts.Node, sourceFile: ts.SourceFile): Modifiers | undefined {
+export function getModifiers(node: ts.Node, sourceFile: ts.SourceFile, parser: Parser<any>): Modifiers | undefined {
 
   if (!('modifiers' in node) || !Array.isArray(node.modifiers) || node.modifiers.length === 0) {
     return;
@@ -40,7 +41,7 @@ export function getModifiers(node: ts.Node, sourceFile: ts.SourceFile): Modifier
       if(!modifiers.decorators) {
         modifiers.decorators = [];
       }
-      modifiers.decorators.push(getDecorator(modifier, sourceFile));
+      modifiers.decorators.push(getDecorator(modifier, sourceFile, parser));
       return;
     }
 

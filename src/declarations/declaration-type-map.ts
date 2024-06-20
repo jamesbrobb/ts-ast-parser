@@ -54,6 +54,12 @@ export type SyntaxKindToDeclarationTypeMap = {
     [ts.SyntaxKind.EnumMember]: EnumMemberDeclaration
     [ts.SyntaxKind.VariableDeclaration]: VariableDeclaration
     [ts.SyntaxKind.Identifier]: string
-    [ts.SyntaxKind.StringLiteral]: string,
+    [ts.SyntaxKind.StringLiteral]: string
+    [ts.SyntaxKind.ObjectLiteralExpression]: Record<string, any>
+    [ts.SyntaxKind.TrueKeyword]: boolean
+    [ts.SyntaxKind.FalseKeyword]: boolean
+    [ts.SyntaxKind.BooleanKeyword]: boolean
+    [ts.SyntaxKind.NumberKeyword]: number
+    [ts.SyntaxKind.ArrayLiteralExpression]: any[]
     [ts.SyntaxKind.Parameter]: Parameter
 }

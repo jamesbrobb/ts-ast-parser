@@ -3,6 +3,7 @@ import {getModifiers, Modifiers} from "./modifiers";
 import {getText} from "../../utilities";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
+import {Parser} from "../declaration-parser";
 
 
 export type GetAccessor = {
@@ -11,9 +12,9 @@ export type GetAccessor = {
 } & Declaration<DeclarationKind.GETTER> & Modifiers;
 
 
-export function getGetAccessorDeclaration(node: ts.GetAccessorDeclaration, sourceFile: ts.SourceFile): GetAccessor {
+export function getGetAccessorDeclaration(node: ts.GetAccessorDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): GetAccessor {
 
-  const modifiers = getModifiers(node, sourceFile) || {};
+  const modifiers = getModifiers(node, sourceFile, parser) || {};
 
   return {
     kind: DeclarationKind.GETTER,

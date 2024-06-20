@@ -2,6 +2,8 @@ import * as ts from 'typescript';
 import {DeclarationKind} from "./declaration-kind";
 import {ParsedNodeResult} from "../utilities";
 import {SyntaxKinds, SyntaxKindToTSNodeTypeMap} from "./ts/syntax-kinds";
+import {Parser} from "./declaration-parser";
+
 
 
 export type Declaration<K extends DeclarationKind> = {
@@ -21,7 +23,7 @@ export type GetDeclarationFn<
     K extends SyntaxKinds,
     M extends SyntaxKindToTypeMap<unknown>,
     R = GetDeclarationTypeForSyntaxKind<K, M>
-> = (node: GetTSNodeTypeForSyntaxKind<K>, sourceFile: ts.SourceFile) => R | ParsedNodeResult<R>
+> = (node: GetTSNodeTypeForSyntaxKind<K>, sourceFile: ts.SourceFile, parser: Parser<M>) => R | ParsedNodeResult<R>
 
 export type DeclarationParseFunctionMap<
     M extends SyntaxKindToTypeMap<unknown>

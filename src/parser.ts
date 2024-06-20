@@ -19,17 +19,17 @@ export type ParseOptions<M extends SyntaxKindToTypeMap<unknown>> = {
 } & ParseNodeOptions<M>
 
 
-export function parse<M extends SyntaxKindToTypeMap<unknown>>(options?: ParseOptions<M>): SourceFileDeclaration[] | SourceFileDeclaration {
+export function parse<M extends SyntaxKindToTypeMap<unknown>>(options: ParseOptions<M>): SourceFileDeclaration[] | SourceFileDeclaration {
 
   const config = getParsedTSConfig(),
     entryFile = config.fileNames[0],
     program = createProgram(entryFile, config.options);
 
-  const pathHandlers = options?.pathHandlers || [],
+  const pathHandlers = options.pathHandlers || [],
     pathMaps: PathParserMaps = buildPathMaps(...pathHandlers);
 
   const dependencyMap = createDependencyMap(program, {
-    debug: options?.debug || false,
+    debug: !!options.debug,
     ...pathMaps
   });
 
@@ -39,9 +39,9 @@ export function parse<M extends SyntaxKindToTypeMap<unknown>>(options?: ParseOpt
     dependencyMap
   }
 
-  if(options?.sourcePath && !options?.walk) {
+  if(options.sourcePath && !options.walk) {
     return parseSourceFile(program, options.sourcePath, sfParseOptions)
   }
 
-  return parseSourceFiles(program, options?.sourcePath || entryFile, sfParseOptions);
+  return parseSourceFiles(program, options.sourcePath || entryFile, sfParseOptions);
 }

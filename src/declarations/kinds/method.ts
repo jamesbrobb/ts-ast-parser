@@ -4,6 +4,7 @@ import {getDecoratorsAsString, getKeywordsAsString, getModifiers, isPublic, Modi
 import {getText} from "../../utilities";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
+import {Parser} from "../declaration-parser";
 
 
 
@@ -15,12 +16,12 @@ export type Method = {
 } & Declaration<DeclarationKind.METHOD> & Modifiers;
 
 
-export function getMethodDeclaration(node: ts.MethodDeclaration, sourceFile: ts.SourceFile): Method {
+export function getMethodDeclaration(node: ts.MethodDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): Method {
 
   const name = getText(node.name, sourceFile),
     type = node.type ? getText(node.type, sourceFile) : undefined,
-    parameters = node.parameters.map(param => getParameter(param, sourceFile)),
-    modifiers = getModifiers(node, sourceFile) || {};
+    parameters = node.parameters.map(param => getParameter(param, sourceFile, parser)),
+    modifiers = getModifiers(node, sourceFile, parser) || {};
 
   return {
     kind: DeclarationKind.METHOD,

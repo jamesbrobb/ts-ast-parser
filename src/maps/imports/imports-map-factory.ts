@@ -7,12 +7,14 @@ import {walkNodeTree} from "../../utilities";
 import {ImportsMap, ImportsMapElement} from "./imports-map";
 import {DependencyMap} from "../dependencies/dependency-map";
 import {AdditionalMapProps} from "../common";
+import {Parser} from "../../declarations";
 
 
 type _Options = {
   debug?: boolean
   pathResolutionMap?: PathResolutionMap,
-  dependencyMap?: DependencyMap
+  dependencyMap?: DependencyMap,
+  parser: Parser<any>
 }
 
 
@@ -36,7 +38,7 @@ export type ImportsMapElementCreatorFn<O extends AdditionalMapProps = {}> = (
 
 export function createImportsMap<O extends AdditionalMapProps = {}>(
   sourceFile: ts.SourceFile,
-  options?: ImportsMapFactoryOptions<O>
+  options: ImportsMapFactoryOptions<O>
 ): ImportsMap<O> {
 
   const map = getImportDeclarations(sourceFile, options)
@@ -45,7 +47,7 @@ export function createImportsMap<O extends AdditionalMapProps = {}>(
     .map(([importDec, imprt, element]) =>
       addAdditionalPropsToImportMapElement({sourceFile, importDec, imprt, element, options}));
 
-  if(options?.debug) {
+  if(options.debug) {
     console.log(map);
   }
 
@@ -54,7 +56,7 @@ export function createImportsMap<O extends AdditionalMapProps = {}>(
 
 
 
-function getImportDeclarations(sourceFile: ts.SourceFile, options?: ImportsMapFactoryOptions): [ts.ImportDeclaration, Import][] {
+function getImportDeclarations(sourceFile: ts.SourceFile, options: ImportsMapFactoryOptions): [ts.ImportDeclaration, Import][] {
   return sourceFile.statements.filter(ts.isImportDeclaration)
     .map((importDec) => {
 

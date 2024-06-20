@@ -2,12 +2,13 @@ import * as ts from "typescript";
 
 import {DeclarationParseFunctionMap} from "./declaration-types";
 import {
+  parseBoolean,
   getClassDeclaration, getConstructor, getDecorator, getEnumDeclaration, getEnumMemberDeclaration,
   getExpressionWithTypeArguments, getGetAccessorDeclaration, getHeritageClause, getImportClause,
   getImportDeclaration, getImportSpecifier, getInterfaceDeclaration, getMethodDeclaration,
   getNamedImports, getNamespaceImport, getParameter, getPropertyDeclaration, getPropertySignature,
   getSetAccessorDeclaration, getTupleDeclaration, getTypeAliasDeclaration, getTypeLiteral,
-  getTypeParameterDeclaration, getTypeReference, getVariableDeclaration
+  getTypeParameterDeclaration, getTypeReference, getVariableDeclaration, parseObjectLiteral, parseArrayLiteral
 } from "./kinds";
 import {getText} from "../utilities";
 import {ignoreChildren} from "./helpers";
@@ -41,5 +42,8 @@ export const defaultDeclarationFunctionMap: DeclarationParseFunctionMap<SyntaxKi
   [ts.SyntaxKind.VariableDeclaration]: ignoreChildren(getVariableDeclaration),
   [ts.SyntaxKind.Identifier]: getText,
   [ts.SyntaxKind.StringLiteral]: getText,
-  [ts.SyntaxKind.Parameter]: getParameter
+  [ts.SyntaxKind.TrueKeyword]: parseBoolean,
+  [ts.SyntaxKind.Parameter]: getParameter,
+  [ts.SyntaxKind.ObjectLiteralExpression]: parseObjectLiteral,
+  [ts.SyntaxKind.ArrayLiteralExpression]: parseArrayLiteral
 }

@@ -61,7 +61,7 @@ export type ParseSourceFileOptions<M extends SyntaxKindToTypeMap<unknown>, O ext
 export function parseSourceFile<M extends SyntaxKindToTypeMap<unknown>, O extends AdditionalMapProps = {}>(
   program: ts.Program,
   source: ts.SourceFile | string,
-  options?: ParseSourceFileOptions<M, O>
+  options: ParseSourceFileOptions<M, O>
 ): SourceFileDeclaration {
 
   const sourceFile: ts.SourceFile = typeof source === 'string' ? getSourceFile(program, source) : source;
@@ -87,7 +87,7 @@ export function parseSourceFile<M extends SyntaxKindToTypeMap<unknown>, O extend
 export function parseSourceFiles<M extends SyntaxKindToTypeMap<unknown>>(
   program: ts.Program,
   entryPoint: string,
-  options?: ParseNodeOptions<M>
+  options: ParseNodeOptions<M>
 ) {
   const basePath = path.dirname(entryPoint),
     ignoreFiles = ['index.ts', 'public-api.ts', '.d.ts', '.spec.ts', '.mock.ts'];

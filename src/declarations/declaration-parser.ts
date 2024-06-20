@@ -1,6 +1,5 @@
 import * as ts from "typescript";
 
-//import {defaultDeclarationFunctionMap} from "./default-function-map";
 import {
   DeclarationParseFunctionMap,
   GetDeclarationFn,
@@ -16,26 +15,34 @@ export type NoParseFunctionReturnType = {
 }
 
 
-export function parseDeclaration<N extends ts.Node, M extends SyntaxKindToTypeMap<unknown>>(
-  node: N,
-  sourceFile: ts.SourceFile,
-  declarationParseFunctionMap: DeclarationParseFunctionMap<M>,
-  debug?: boolean
-): GetDeclarationTypeForSyntaxKind<N['kind'], M> | NoParseFunctionReturnType {
+export class Parser<M extends SyntaxKindToTypeMap<unknown>> {
 
-  const parseFunc: GetDeclarationFn<N['kind'], M> | undefined = declarationParseFunctionMap[node.kind];
+  readonly #map: DeclarationParseFunctionMap<M>;
 
-  if(!parseFunc) {
-    if(debug) {
-      console.warn(`No parse function registered for ${ts.SyntaxKind[node.kind]} - kind: ${node.kind}`);
-    }
-
-    return {
-      raw: node.getText(sourceFile),
-      kind: node.kind,
-      type: ts.SyntaxKind[node.kind]
-    }
+  constructor(map: DeclarationParseFunctionMap<M>) {
+    this.#map = map;
   }
-  // TODO need to fix narrowing issues and remove any
-  return parseFunc(node as any, sourceFile);
+
+  parse<N extends ts.Node>(
+    node: N,
+    sourceFile: ts.SourceFile,
+    debug?: boolean
+  ): GetDeclarationTypeForSyntaxKind<N['kind'], M> | NoParseFunctionReturnType {
+
+    const parseFunc: GetDeclarationFn<N['kind'], M> | undefined = this.#map[node.kind];
+
+    if(!parseFunc) {
+      if(debug) {
+        console.warn(`No parse function registered for ${ts.SyntaxKind[node.kind]} - kind: ${node.kind}`);
+      }
+
+      return {
+        raw: node.getText(sourceFile),
+        kind: node.kind,
+        type: ts.SyntaxKind[node.kind]
+      }
+    }
+
+    return parseFunc(node as any, sourceFile, this);
+  }
 }

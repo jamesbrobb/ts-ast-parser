@@ -2,6 +2,7 @@ import * as ts from "typescript";
 import {getText} from "../../utilities";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
+import {Parser} from "../declaration-parser";
 
 
 export type DecoratorMetadata = {
@@ -32,7 +33,7 @@ export type DecoratorDef<T extends string, M extends DecoratorMetadataTypes> = {
 } & Declaration<DeclarationKind.DECORATOR>
 
 
-export function getDecorator<T extends Decorator>(node: ts.Decorator, sourceFile: ts.SourceFile): T {
+export function getDecorator<T extends Decorator>(node: ts.Decorator, sourceFile: ts.SourceFile, parser: Parser<any>): T {
 
   if(!ts.isCallLikeExpression(node)) {
     throw new Error("Decorator Node is not a call like expression");
@@ -42,12 +43,12 @@ export function getDecorator<T extends Decorator>(node: ts.Decorator, sourceFile
     metadata: Decorator['metadata'] = {};
 
   if(ts.isIdentifier(node.expression)) {
-    type = node.expression.getText(sourceFile);
+    type = getText(node.expression, sourceFile);
   }
 
   if (ts.isCallExpression(node.expression)) {
-    type = node.expression.expression.getText(sourceFile);
-    metadata = getDecoratorMetadata<T['metadata']>(node.expression, sourceFile);
+    type = getText(node.expression.expression, sourceFile);
+    metadata = getDecoratorMetadata<T['metadata']>(node.expression, sourceFile, parser);
   }
 
   const decorator = {
@@ -62,7 +63,7 @@ export function getDecorator<T extends Decorator>(node: ts.Decorator, sourceFile
 }
 
 
-function getDecoratorMetadata<T extends Decorator['metadata']>(node: ts.CallExpression, sourceFile: ts.SourceFile): T {
+function getDecoratorMetadata<T extends Decorator['metadata']>(node: ts.CallExpression, sourceFile: ts.SourceFile, parser: Parser<any>): T {
 
   let metadata: any | string | (any | string)[] | undefined;
 
@@ -76,28 +77,7 @@ function getDecoratorMetadata<T extends Decorator['metadata']>(node: ts.CallExpr
     }
 
     if (ts.isObjectLiteralExpression(arg)) {
-
-      arg.properties.forEach(prop => {
-
-        if (!prop.name || !ts.isIdentifier(prop.name)) {
-          throw new Error(`Property name is not an identifier - ${prop}`);
-        }
-
-        if (!ts.isPropertyAssignment(prop)) {
-          throw new Error(`Property is not a property assignment - ${prop}`);
-        }
-
-        const key = prop.name.getText(sourceFile) as keyof T;
-
-        let current = metadata[metadata.length - 1];
-
-        if(typeof current !== 'object') {
-          current = {};
-          metadata.push(current);
-        }
-
-        current[key] = getText(prop.initializer, sourceFile);
-      });
+      metadata.push(parser.parse(arg, sourceFile));
     }
   });
 

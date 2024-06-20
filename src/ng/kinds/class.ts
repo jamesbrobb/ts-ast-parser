@@ -1,18 +1,28 @@
 import * as ts from "typescript";
 
-import {getClassDeclaration, ClassDeclaration} from "../../declarations";
+import {
+    getClassDeclaration,
+    ClassDeclaration,
+    Decorator,
+    Modifiers,
+    TypeParameter,
+    HeritageClause, Constructor, Method, GetAccessor, SetAccessor, Parser
+} from "../../declarations";
 import {isUIClass} from "../ng-helpers";
-// import {NgPropertyDeclaration} from "./property";
+import {NgPropertyDeclaration} from "./property";
 
 
-export type NgClassDeclaration = {
+export type NgClassDeclaration = ClassDeclaration & {
     isUI: boolean,
-    //children?: ClassDeclaration['children'] & (NgPropertyDeclaration)[]
-} & ClassDeclaration
+    children?: (
+        Decorator | Modifiers | TypeParameter | HeritageClause |
+        Constructor | NgPropertyDeclaration | Method | GetAccessor | SetAccessor
+        )[]
+}
 
 
-export function getNgClassDeclaration(node: ts.ClassDeclaration, sourceFile: ts.SourceFile): NgClassDeclaration {
-    const dec = getClassDeclaration(node, sourceFile),
+export function getNgClassDeclaration(node: ts.ClassDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): NgClassDeclaration {
+    const dec = getClassDeclaration(node, sourceFile, parser),
         isUI = isUIClass(dec);
 
     return {

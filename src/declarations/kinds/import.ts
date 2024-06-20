@@ -3,6 +3,7 @@ import {getText} from "../../utilities";
 import {getModifiers, Modifiers} from "./modifiers";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
+import {Parser} from "../declaration-parser";
 
 
 export type Import = {
@@ -39,10 +40,10 @@ export function isImportDeclaration(result: any): result is Import {
   return 'kind' in result && result.kind === DeclarationKind.IMPORT
 }
 
-export function getImportDeclaration(node: ts.ImportDeclaration, sourceFile: ts.SourceFile): Import {
+export function getImportDeclaration(node: ts.ImportDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): Import {
 
   const module = getText(node.moduleSpecifier, sourceFile),
-    modifiers = getModifiers(node, sourceFile) || {};
+    modifiers = getModifiers(node, sourceFile, parser) || {};
 
   return {
     kind: DeclarationKind.IMPORT,

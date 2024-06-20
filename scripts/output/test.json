@@ -137,12 +137,24 @@
           "type": "Directive",
           "metadata": {
             "selector": "[tvChart]",
-            "standalone": "true",
-            "providers": "[tvChartProviderWithExistenceCheck]",
-            "hostDirectives": "[\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]"
+            "standalone": true,
+            "providers": [
+              "tvChartProviderWithExistenceCheck"
+            ],
+            "hostDirectives": [
+              {
+                "directive": "TVChartInputsDirective",
+                "inputs": [
+                  "id",
+                  "options",
+                  "markers"
+                ]
+              },
+              "tvChartOutputsDirectiveHostDef"
+            ]
           },
-          "signature": "@Directive({selector: [tvChart], standalone: true, providers: [tvChartProviderWithExistenceCheck], hostDirectives: [\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]})",
-          "raw": "@Directive({\n  selector: '[tvChart]',\n  standalone: true,\n  providers: [tvChartProviderWithExistenceCheck],\n  hostDirectives: [\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]\n})"
+          "signature": "@Directive({selector: [tvChart], standalone: true, providers: tvChartProviderWithExistenceCheck, hostDirectives: [object Object],tvChartOutputsDirectiveHostDef})",
+          "raw": "@Directive({\n  selector: '[tvChart]',\n  standalone: true,\n  providers: [tvChartProviderWithExistenceCheck],\n  hostDirectives: [\n    {\n      directive: TVChartInputsDirective,\n      inputs: ['id', 'options', 'markers']\n    },\n    tvChartOutputsDirectiveHostDef\n  ]\n})"
         }
       ],
       "keywords": [
@@ -155,12 +167,24 @@
           "type": "Directive",
           "metadata": {
             "selector": "[tvChart]",
-            "standalone": "true",
-            "providers": "[tvChartProviderWithExistenceCheck]",
-            "hostDirectives": "[\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]"
+            "standalone": true,
+            "providers": [
+              "tvChartProviderWithExistenceCheck"
+            ],
+            "hostDirectives": [
+              {
+                "directive": "TVChartInputsDirective",
+                "inputs": [
+                  "id",
+                  "options",
+                  "markers"
+                ]
+              },
+              "tvChartOutputsDirectiveHostDef"
+            ]
           },
-          "signature": "@Directive({selector: [tvChart], standalone: true, providers: [tvChartProviderWithExistenceCheck], hostDirectives: [\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]})",
-          "raw": "@Directive({\n  selector: '[tvChart]',\n  standalone: true,\n  providers: [tvChartProviderWithExistenceCheck],\n  hostDirectives: [\n    tvChartInputsDirectiveHostDef,\n    tvChartOutputsDirectiveHostDef\n  ]\n})"
+          "signature": "@Directive({selector: [tvChart], standalone: true, providers: tvChartProviderWithExistenceCheck, hostDirectives: [object Object],tvChartOutputsDirectiveHostDef})",
+          "raw": "@Directive({\n  selector: '[tvChart]',\n  standalone: true,\n  providers: [tvChartProviderWithExistenceCheck],\n  hostDirectives: [\n    {\n      directive: TVChartInputsDirective,\n      inputs: ['id', 'options', 'markers']\n    },\n    tvChartOutputsDirectiveHostDef\n  ]\n})"
         },
         {
           "raw": "export",
@@ -228,9 +252,7 @@
                   "raw": "T"
                 },
                 {
-                  "raw": "{alias: 'tvChart'}",
-                  "kind": 210,
-                  "type": "ObjectLiteralExpression",
+                  "alias": "tvChart",
                   "children": [
                     {
                       "raw": "alias: 'tvChart'",

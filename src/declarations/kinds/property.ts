@@ -4,6 +4,7 @@ import {getText} from "../../utilities";
 import {getType} from "./type";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
+import {Parser} from "../declaration-parser";
 
 
 export type PropertyDeclaration = {
@@ -27,10 +28,10 @@ export type PropertySignature = {
 
 
 
-export function getPropertyDeclaration(node: ts.PropertyDeclaration, sourceFile: ts.SourceFile): PropertyDeclaration {
+export function getPropertyDeclaration(node: ts.PropertyDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): PropertyDeclaration {
 
   const name = getText(node.name, sourceFile),
-    modifiers = getModifiers(node, sourceFile) || {},
+    modifiers = getModifiers(node, sourceFile, parser) || {},
     type = node.type ? getText(node.type, sourceFile) : undefined,
     optional = !!node.questionToken,
     exclamation = !!node.exclamationToken,
@@ -50,11 +51,11 @@ export function getPropertyDeclaration(node: ts.PropertyDeclaration, sourceFile:
 }
 
 
-export function getPropertySignature(node: ts.PropertySignature, sourceFile: ts.SourceFile): PropertySignature {
+export function getPropertySignature(node: ts.PropertySignature, sourceFile: ts.SourceFile, parser: Parser<any>): PropertySignature {
 
     const name = getText(node.name, sourceFile),
-      modifiers = getModifiers(node, sourceFile) || {},
-      type = node.type ? getType(node.type, sourceFile) : undefined,
+      modifiers = getModifiers(node, sourceFile, parser) || {},
+      type = node.type ? getType(node.type, sourceFile, parser) : undefined,
       optional = !!node.questionToken;
 
     return {

@@ -9,7 +9,8 @@ import {
   RxjsPathHandler,
   AngularMaterialPathHandler,
   LightweightChartsPathHandler,
-  parse
+  parse,
+  Parser
 } from "../src";
 import {NgDeclarationFunctionMap} from "../src/ng/declarations";
 
@@ -45,7 +46,7 @@ function run() {
     walk: false,
     sourcePath,
     pathHandlers,
-    declarationParseFunctionMap: NgDeclarationFunctionMap
+    parser: new Parser(NgDeclarationFunctionMap)
   });
 
   fs.writeFileSync(

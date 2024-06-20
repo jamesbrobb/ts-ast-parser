@@ -1,6 +1,6 @@
 import {PropertyDeclaration} from "../../declarations";
 
 
-export type NgPropertyDeclaration = {
+export type NgPropertyDeclaration = PropertyDeclaration & {
 
-} & PropertyDeclaration
+}

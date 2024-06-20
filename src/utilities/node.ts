@@ -1,11 +1,11 @@
 import * as ts from "typescript";
 import {
-  DeclarationParseFunctionMap,
-  defaultDeclarationFunctionMap, GetDeclarationTypeForSyntaxKind, NoParseFunctionReturnType,
-  parseDeclaration,
-  SyntaxKindToTypeMap
+  GetDeclarationTypeForSyntaxKind,
+  NoParseFunctionReturnType,
+  SyntaxKindToTypeMap,
+  SyntaxKindToDeclarationTypeMap,
+  Parser
 } from "../declarations";
-import {SyntaxKindToDeclarationTypeMap} from "../declarations/declaration-type-map";
 
 
 export type ParsedNodeResult<R> = {result: R, exit: boolean};
@@ -15,7 +15,7 @@ export function isParsedNodeResult<R>(result: any): result is ParsedNodeResult<R
 }
 
 export type ParseNodeOptions<M extends SyntaxKindToTypeMap<unknown>> = {
-  declarationParseFunctionMap?: DeclarationParseFunctionMap<M>
+  parser: Parser<M>
   returnArray?: boolean,
   lazy?: boolean,
   debug?: boolean
@@ -26,15 +26,14 @@ export function walkNodeTree<
   N extends ts.Node,
   M extends SyntaxKindToTypeMap<unknown> = SyntaxKindToDeclarationTypeMap,
   R = GetDeclarationTypeForSyntaxKind<N['kind'], M> | NoParseFunctionReturnType,
->(node: N, sourceFile: ts.SourceFile, options?: ParseNodeOptions<M>): any[] | Record<PropertyKey, unknown> {
+>(node: N, sourceFile: ts.SourceFile, options: ParseNodeOptions<M>): any[] | Record<PropertyKey, unknown> {
 
-  const declarationParseFunctionMap = options?.declarationParseFunctionMap || defaultDeclarationFunctionMap,
-      children: any[] = [];
+  const children: any[] = [];
 
   let parsed: R | (() => R),
     exit = false;
 
-  if(options?.lazy) {
+  if(options.lazy) {
 
     parsed = (() => {
 
@@ -44,9 +43,7 @@ export function walkNodeTree<
 
         if(!parsedNode) {
 
-          const res = parseDeclaration<N, M>(
-              node, sourceFile, declarationParseFunctionMap as any, options?.debug
-          );
+          const res = options.parser.parse(node, sourceFile, options.debug);
 
           parsedNode = (isParsedNodeResult<R>(res) ? res.result : res) as any;
         }
@@ -57,7 +54,7 @@ export function walkNodeTree<
 
   } else {
 
-    const res = parseDeclaration(node, sourceFile, declarationParseFunctionMap as any, options?.debug);
+    const res = options.parser.parse(node, sourceFile, options.debug);
 
     if(isParsedNodeResult<R>(res)) {
       parsed = res.result;
@@ -73,7 +70,7 @@ export function walkNodeTree<
     });
   }
 
-  if(options?.returnArray) {
+  if(options.returnArray) {
     return children.length ? [parsed, children] : [parsed];
   }
 

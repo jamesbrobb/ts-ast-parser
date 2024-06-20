@@ -4,6 +4,7 @@ import {getModifiers, Modifiers} from "./modifiers";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
 import {getText} from "../../utilities";
+import {Parser} from "../declaration-parser";
 
 
 export type Parameter = {
@@ -16,12 +17,12 @@ export type Parameter = {
 } & Declaration<DeclarationKind.PARAMETER> & Modifiers;
 
 
-export function getParameter(node: ts.ParameterDeclaration, sourceFile: ts.SourceFile): Parameter {
+export function getParameter(node: ts.ParameterDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): Parameter {
 
   const name = getText(node.name, sourceFile),
     type = node.type ? getText(node.type, sourceFile) : undefined,
     optional = !!node.questionToken,
-    modifiers = getModifiers(node, sourceFile) || {},
+    modifiers = getModifiers(node, sourceFile, parser) || {},
     initializedValue = node.initializer ? getText(node.initializer, sourceFile) : undefined;
 
   return {
