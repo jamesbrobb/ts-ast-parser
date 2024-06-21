@@ -1,5 +1,7 @@
+import * as ts from "typescript";
 import {ParsedNodeResult} from "../utilities";
 import {GetDeclarationFn} from "./declaration-types";
+
 
 // TODO - need to think about where this function should live
 export function ignoreChildren<F extends GetDeclarationFn<any, any>>(func: F) {
@@ -13,4 +15,10 @@ export function ignoreChildren<F extends GetDeclarationFn<any, any>>(func: F) {
       result
     }
   }
+}
+
+export type extractNodeArrayType<T> = T extends Array<infer R> ? R : T
+
+export function isNodeArray(value: any): value is ts.NodeArray<any> {
+  return Array.isArray(value);
 }

@@ -30,5 +30,7 @@ export enum DeclarationKind {
   TUPLE_TYPE = 'tupleType',
   ENUM = 'enum',
   ENUM_MEMBER = 'enumMember',
-  VARIABLE = 'variable'
+  VARIABLE = 'variable',
+  CALL_EXPRESSION = 'callExpression',
+  FUNCTION = 'function',
 }

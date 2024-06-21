@@ -1,6 +1,5 @@
 import * as ts from "typescript";
 import {getModifiers, Modifiers} from "./modifiers";
-import {getText} from "../../utilities";
 import {getPropertySignature, PropertySignature} from "./property";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
@@ -11,6 +10,7 @@ export type TypeParameter = {
   name: string,
   constraint?: string,
   default?: string,
+  // expression: Expression // TODO - check this out
   raw: string
 } & Declaration<DeclarationKind.TYPE_PARAMETER> & Modifiers;
 
@@ -44,34 +44,31 @@ export type TypeElement = {
 
 
 export function getTypeParameterDeclaration(node: ts.TypeParameterDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): TypeParameter {
-
-  const modifiers = getModifiers(node, sourceFile, parser) || {};
-
   return {
     kind: DeclarationKind.TYPE_PARAMETER,
-    name: getText(node.name, sourceFile),
-    constraint: node.constraint ? getText(node.constraint, sourceFile) : undefined,
-    default: node.default ? getText(node.default, sourceFile) : undefined,
+    name: parser.parse(node.name, sourceFile),
+    constraint: parser.parse(node.constraint, sourceFile),
+    default: parser.parse(node.default, sourceFile),
+    ...(getModifiers(node, sourceFile, parser) || {}),
     raw: node.getText(sourceFile),
-    ...modifiers
   }
 }
 
 
-export function getTypeReference(node: ts.TypeReferenceNode, sourceFile: ts.SourceFile): TypeReference {
+export function getTypeReference(node: ts.TypeReferenceNode, sourceFile: ts.SourceFile, parser: Parser<any>): TypeReference {
   return {
     kind: DeclarationKind.TYPE_REFERENCE,
-    name: getText(node.typeName, sourceFile),
+    name: parser.parse(node.typeName, sourceFile),
     raw: node.getText(sourceFile)
   }
 }
 
 
-export function getExpressionWithTypeArguments(node: ts.ExpressionWithTypeArguments, sourceFile: ts.SourceFile): ExpressionWithTypeArguments {
+export function getExpressionWithTypeArguments(node: ts.ExpressionWithTypeArguments, sourceFile: ts.SourceFile, parser: Parser<any>): ExpressionWithTypeArguments {
     return {
       kind: DeclarationKind.EXPRESSION_WITH_TYPE_ARGUMENTS,
-      expression: getText(node.expression, sourceFile),
-      typeArguments: node.typeArguments ? node.typeArguments.map(typeArg => getText(typeArg, sourceFile)) : undefined,
+      expression: parser.parse(node.expression, sourceFile),
+      typeArguments: node.typeArguments ? parser.parse(node.typeArguments, sourceFile) : undefined,
       raw: node.getText(sourceFile)
     }
 }
@@ -83,7 +80,7 @@ export function getTypeAliasDeclaration(node: ts.TypeAliasDeclaration, sourceFil
 
   return {
     kind: DeclarationKind.TYPE_ALIAS,
-    name: getText(node.name, sourceFile),
+    name: parser.parse(node.name, sourceFile),
     typeParameters: node.typeParameters ? node.typeParameters.map(typeParam => getTypeParameterDeclaration(typeParam, sourceFile, parser)) : undefined,
     type: getType(node.type, sourceFile, parser),
     raw: node.getText(sourceFile),
@@ -104,18 +101,18 @@ export function getTypeLiteral(node: ts.TypeLiteralNode, sourceFile: ts.SourceFi
       return {
         kind: member.kind,
         nodeType: ts.SyntaxKind[member.kind],
-        raw: getText(member, sourceFile)
+        raw: parser.parse(member, sourceFile)
       }
     }),
     raw: node.getText(sourceFile)
   }
 }
 
-export function getTypeElement(node: ts.TypeElement, sourceFile: ts.SourceFile): TypeElement {
+export function getTypeElement(node: ts.TypeElement, sourceFile: ts.SourceFile, parser: Parser<any>): TypeElement {
 
     return {
       kind: DeclarationKind.TYPE_ELEMENT,
-      name: node.name ? getText(node.name, sourceFile) : '',
+      name: node.name ? parser.parse(node.name, sourceFile) : '',
       optional: !!node.questionToken
     }
 }
@@ -123,21 +120,18 @@ export function getTypeElement(node: ts.TypeElement, sourceFile: ts.SourceFile):
 
 export function getType(node: ts.Node, sourceFile: ts.SourceFile, parser: Parser<any>): string | any {
 
-  if(ts.isTypeReferenceNode(node)) {
-    return getTypeReference(node, sourceFile);
+  if(ts.isTypeReferenceNode(node) || ts.isTypeLiteralNode(node)) {
+    return parser.parse(node, sourceFile);
   }
 
   if(ts.isTypeElement(node)) {
-    return getTypeElement(node, sourceFile);
-  }
-
-  if(ts.isTypeLiteralNode(node)) {
-    return getTypeLiteral(node, sourceFile, parser);
+    // TODO - work out how to move this to parse map
+    return getTypeElement(node, sourceFile, parser);
   }
 
   if(ts.isUnionTypeNode(node)) {
     return node.types.map(type => getType(type, sourceFile, parser));
   }
 
-  return getText(node, sourceFile);
+  return parser.parse(node, sourceFile);
 }

@@ -1,5 +1,6 @@
 import * as ts from "typescript";
-import {getExportedDeclarationsFromSource, getText} from "../../utilities";
+import {getExportedDeclarationsFromSource} from "../../utilities";
+import {parseString} from "../../declarations";
 
 
 export type LocalMapElement = [kind: ts.SyntaxKind, node: ts.Declaration]
@@ -14,7 +15,7 @@ export function createLocalMap(
   return new Map(
     getExportedDeclarationsFromSource(program, sourceFile, debug)
       .map(node => [
-        'name' in node && node.name? getText(node.name as any, sourceFile) : 'Name not found',
+        'name' in node && node.name? parseString(node.name as any, sourceFile) : 'Name not found',
         [node.kind, node]
       ])
   );

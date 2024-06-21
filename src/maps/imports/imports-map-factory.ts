@@ -107,11 +107,11 @@ function parseImportToImportMapElement (
   return getImportNames(imprt)
     .map<ImportsMapElement>(name => {
 
-      let props: ImportsMapElement ={
+      let props: ImportsMapElement = {
         name,
-        module: imprt.module,
+        module: imprt.moduleSpecifier,
         resolvedModulePath: resolveModulePath(
-          imprt.module,
+          imprt.moduleSpecifier,
           sourceFile,
           options?.pathResolutionMap || []
         )

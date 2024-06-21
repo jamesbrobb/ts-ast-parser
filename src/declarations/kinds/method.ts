@@ -1,10 +1,10 @@
 import * as ts from "typescript";
-import {getParameter, getParametersAsString, Parameter} from "./parameter";
+import {getParametersAsString, Parameter} from "./parameter";
 import {getDecoratorsAsString, getKeywordsAsString, getModifiers, isPublic, Modifiers} from "./modifiers";
-import {getText} from "../../utilities";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
 import {Parser} from "../declaration-parser";
+import {TypeParameter} from "./type";
 
 
 
@@ -12,24 +12,29 @@ export type Method = {
   name: string,
   signature: string,
   parameters: Parameter[],
-  type?: string
+  type?: string,
+  typeParameters?: TypeParameter[]
 } & Declaration<DeclarationKind.METHOD> & Modifiers;
 
 
 export function getMethodDeclaration(node: ts.MethodDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): Method {
 
-  const name = getText(node.name, sourceFile),
-    type = node.type ? getText(node.type, sourceFile) : undefined,
-    parameters = node.parameters.map(param => getParameter(param, sourceFile, parser)),
-    modifiers = getModifiers(node, sourceFile, parser) || {};
+  const name = parser.parse(node.name, sourceFile),
+    type = parser.parse(node.type, sourceFile),
+    parameters = parser.parse(node.parameters, sourceFile),
+    modifiers = getModifiers(node, sourceFile, parser) || {},
+    typeParameters = parser.parse(node.typeParameters, sourceFile);
+
+  // TODO - add props from ts.FunctionLikeDeclarationBase and ts.SignatureDeclarationBase
 
   return {
     kind: DeclarationKind.METHOD,
     name,
     type,
     parameters,
+    typeParameters,
+    ...modifiers,
     signature: getMethodSignature(name, parameters, modifiers, type),
-    ...modifiers
   };
 }
 

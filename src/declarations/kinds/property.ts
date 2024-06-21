@@ -1,6 +1,5 @@
 import * as ts from "typescript";
 import {getDecoratorsAsString, getKeywordsAsString, getModifiers, Modifiers} from "./modifiers";
-import {getText} from "../../utilities";
 import {getType} from "./type";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
@@ -18,24 +17,14 @@ export type PropertyDeclaration = {
 } & Declaration<DeclarationKind.PROPERTY> & Modifiers;
 
 
-export type PropertySignature = {
-  name: string,
-  optional: boolean,
-  type?: string,
-  signature: string,
-  raw: string
-} & Declaration<DeclarationKind.PROPERTY_SIGNATURE> & Modifiers;
-
-
-
 export function getPropertyDeclaration(node: ts.PropertyDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): PropertyDeclaration {
 
-  const name = getText(node.name, sourceFile),
+  const name = parser.parse(node.name, sourceFile),
     modifiers = getModifiers(node, sourceFile, parser) || {},
-    type = node.type ? getText(node.type, sourceFile) : undefined,
+    type = parser.parse(node.type, sourceFile),
     optional = !!node.questionToken,
     exclamation = !!node.exclamationToken,
-    initializedValue = node.initializer ? getText(node.initializer, sourceFile) : undefined;
+    initializedValue = parser.parse(node.initializer, sourceFile);
 
   return {
     kind: DeclarationKind.PROPERTY,
@@ -51,10 +40,20 @@ export function getPropertyDeclaration(node: ts.PropertyDeclaration, sourceFile:
 }
 
 
+export type PropertySignature = {
+  name: string,
+  optional: boolean,
+  type?: string,
+  signature: string,
+  raw: string
+} & Declaration<DeclarationKind.PROPERTY_SIGNATURE> & Modifiers;
+
+
 export function getPropertySignature(node: ts.PropertySignature, sourceFile: ts.SourceFile, parser: Parser<any>): PropertySignature {
 
-    const name = getText(node.name, sourceFile),
+    const name = parser.parse(node.name, sourceFile),
       modifiers = getModifiers(node, sourceFile, parser) || {},
+      // TODO - see if getType can be added to the parser map
       type = node.type ? getType(node.type, sourceFile, parser) : undefined,
       optional = !!node.questionToken;
 

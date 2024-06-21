@@ -1,5 +1,4 @@
 import * as ts from "typescript";
-import {getText} from "../../utilities";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
 import {Parser} from "../declaration-parser";
@@ -43,11 +42,11 @@ export function getDecorator<T extends Decorator>(node: ts.Decorator, sourceFile
     metadata: Decorator['metadata'] = {};
 
   if(ts.isIdentifier(node.expression)) {
-    type = getText(node.expression, sourceFile);
+    type = parser.parse(node.expression, sourceFile);
   }
 
   if (ts.isCallExpression(node.expression)) {
-    type = getText(node.expression.expression, sourceFile);
+    type = parser.parse(node.expression.expression, sourceFile);
     metadata = getDecoratorMetadata<T['metadata']>(node.expression, sourceFile, parser);
   }
 
@@ -72,7 +71,7 @@ function getDecoratorMetadata<T extends Decorator['metadata']>(node: ts.CallExpr
     metadata = metadata || [];
 
     if (ts.isIdentifier(arg) || ts.isStringLiteral(arg)) {
-      metadata.push(getText(arg, sourceFile));
+      metadata.push(parser.parse(arg, sourceFile));
       return;
     }
 

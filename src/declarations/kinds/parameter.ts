@@ -3,7 +3,6 @@ import {getModifiers, Modifiers} from "./modifiers";
 
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
-import {getText} from "../../utilities";
 import {Parser} from "../declaration-parser";
 
 
@@ -12,26 +11,27 @@ export type Parameter = {
   optional: boolean,
   signature: string
   type?: string,
-  initializedValue?: string,
+  initializer?: string,
+  //dotDotDotToken?: DotDotDotToken // TODO
   raw: string
 } & Declaration<DeclarationKind.PARAMETER> & Modifiers;
 
 
-export function getParameter(node: ts.ParameterDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): Parameter {
+export function parseParameter(node: ts.ParameterDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): Parameter {
 
-  const name = getText(node.name, sourceFile),
-    type = node.type ? getText(node.type, sourceFile) : undefined,
+  const name = parser.parse(node.name, sourceFile),
+    type = parser.parse(node.type, sourceFile),
     optional = !!node.questionToken,
     modifiers = getModifiers(node, sourceFile, parser) || {},
-    initializedValue = node.initializer ? getText(node.initializer, sourceFile) : undefined;
+    initializer = parser.parse(node.initializer, sourceFile);
 
   return {
     kind: DeclarationKind.PARAMETER,
     name,
     type,
     optional,
-    initializedValue,
-    signature: getParameterSignature(name, type, optional, initializedValue),
+    initializer,
+    signature: getParameterSignature(name, type, optional, initializer),
     raw: node.getText(sourceFile),
     ...modifiers
   }

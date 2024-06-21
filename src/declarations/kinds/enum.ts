@@ -1,6 +1,5 @@
 import * as ts from "typescript";
 import {getModifiers, Modifiers} from "./modifiers";
-import {getText} from "../../utilities";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
 import {Parser} from "../declaration-parser";
@@ -22,29 +21,21 @@ export type EnumMemberDeclaration = {
 
 export function getEnumDeclaration(node: ts.EnumDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): EnumDeclaration {
 
-  const name = getText(node.name, sourceFile),
-    modifiers = getModifiers(node, sourceFile, parser) || {},
-    members = node.members.map(member => getEnumMemberDeclaration(member, sourceFile));
-
   return {
     kind: DeclarationKind.ENUM,
-    name,
-    members,
-    raw: node.getText(sourceFile),
-    ...modifiers
+    name: parser.parse(node.name, sourceFile),
+    ...(getModifiers(node, sourceFile, parser) || {}),
+    members: parser.parse(node.members, sourceFile),
+    raw: node.getText(sourceFile)
   };
 }
 
 
-export function getEnumMemberDeclaration(node: ts.EnumMember, sourceFile: ts.SourceFile): EnumMemberDeclaration {
-
-    const name = getText(node.name, sourceFile),
-      initializer = node.initializer ? getText(node.initializer, sourceFile) : undefined;
-
+export function getEnumMemberDeclaration(node: ts.EnumMember, sourceFile: ts.SourceFile, parser: Parser<any>): EnumMemberDeclaration {
     return {
       kind: DeclarationKind.ENUM_MEMBER,
-      name,
-      initializer,
+      name: parser.parse(node.name, sourceFile),
+      initializer: parser.parse(node.initializer, sourceFile),
       raw: node.getText(sourceFile)
     };
 }

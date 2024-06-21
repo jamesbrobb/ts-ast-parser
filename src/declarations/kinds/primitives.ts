@@ -2,6 +2,7 @@ import * as ts from "typescript";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
 import {Parser} from "../declaration-parser";
+import {stripQuotes} from "../../utilities";
 
 
 export type TupleDeclaration = {
@@ -44,4 +45,8 @@ export function parseArrayLiteral(node: ts.ArrayLiteralExpression, sourceFile: t
 
 export function parseBoolean(node: ts.BooleanLiteral, sourceFile: ts.SourceFile): boolean {
   return node.getText(sourceFile) === 'true';
+}
+
+export function parseString(node: ts.Node, sourceFile: ts.SourceFile): string {
+  return stripQuotes(ts.isStringLiteral(node) ? node.text : node.getText(sourceFile));
 }

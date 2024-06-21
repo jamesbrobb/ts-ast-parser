@@ -117,20 +117,839 @@
     {
       "kind": "variable",
       "name": "DEFAULT_CHART_OPTIONS",
-      "type": "DeepPartial<ChartOptions>",
-      "initializer": "{\n  height: 300,\n  autoSize: true,\n  timeScale: {\n    fixRightEdge: true,\n    lockVisibleTimeRangeOnResize: true,\n    timeVisible: true,\n    secondsVisible: false,\n  },\n  crosshair: {\n    vertLine: {\n      style: LineStyle.LargeDashed\n    },\n    horzLine: {\n      style: LineStyle.LargeDashed\n    },\n  }\n}",
-      "raw": "DEFAULT_CHART_OPTIONS: DeepPartial<ChartOptions> = {\n  height: 300,\n  autoSize: true,\n  timeScale: {\n    fixRightEdge: true,\n    lockVisibleTimeRangeOnResize: true,\n    timeVisible: true,\n    secondsVisible: false,\n  },\n  crosshair: {\n    vertLine: {\n      style: LineStyle.LargeDashed\n    },\n    horzLine: {\n      style: LineStyle.LargeDashed\n    },\n  }\n}"
+      "type": {
+        "kind": "typeReference",
+        "name": "DeepPartial",
+        "raw": "DeepPartial<ChartOptions>"
+      },
+      "initializer": {
+        "height": {
+          "raw": "300",
+          "kind": 9,
+          "type": "FirstLiteralToken"
+        },
+        "autoSize": true,
+        "timeScale": {
+          "fixRightEdge": true,
+          "lockVisibleTimeRangeOnResize": true,
+          "timeVisible": true,
+          "secondsVisible": false
+        },
+        "crosshair": {
+          "vertLine": {
+            "style": {
+              "raw": "LineStyle.LargeDashed",
+              "kind": 211,
+              "type": "PropertyAccessExpression"
+            }
+          },
+          "horzLine": {
+            "style": {
+              "raw": "LineStyle.LargeDashed",
+              "kind": 211,
+              "type": "PropertyAccessExpression"
+            }
+          }
+        }
+      },
+      "raw": "DEFAULT_CHART_OPTIONS: DeepPartial<ChartOptions> = {\n  height: 300,\n  autoSize: true,\n  timeScale: {\n    fixRightEdge: true,\n    lockVisibleTimeRangeOnResize: true,\n    timeVisible: true,\n    secondsVisible: false,\n  },\n  crosshair: {\n    vertLine: {\n      style: LineStyle.LargeDashed\n    },\n    horzLine: {\n      style: LineStyle.LargeDashed\n    },\n  }\n}",
+      "children": [
+        "DEFAULT_CHART_OPTIONS",
+        {
+          "kind": "typeReference",
+          "name": "DeepPartial",
+          "raw": "DeepPartial<ChartOptions>",
+          "children": [
+            "DeepPartial",
+            {
+              "kind": "typeReference",
+              "name": "ChartOptions",
+              "raw": "ChartOptions",
+              "children": [
+                "ChartOptions"
+              ]
+            }
+          ]
+        },
+        {
+          "height": {
+            "raw": "300",
+            "kind": 9,
+            "type": "FirstLiteralToken"
+          },
+          "autoSize": true,
+          "timeScale": {
+            "fixRightEdge": true,
+            "lockVisibleTimeRangeOnResize": true,
+            "timeVisible": true,
+            "secondsVisible": false
+          },
+          "crosshair": {
+            "vertLine": {
+              "style": {
+                "raw": "LineStyle.LargeDashed",
+                "kind": 211,
+                "type": "PropertyAccessExpression"
+              }
+            },
+            "horzLine": {
+              "style": {
+                "raw": "LineStyle.LargeDashed",
+                "kind": 211,
+                "type": "PropertyAccessExpression"
+              }
+            }
+          },
+          "children": [
+            {
+              "raw": "height: 300",
+              "kind": 303,
+              "type": "PropertyAssignment",
+              "children": [
+                "height",
+                {
+                  "raw": "300",
+                  "kind": 9,
+                  "type": "FirstLiteralToken"
+                }
+              ]
+            },
+            {
+              "raw": "autoSize: true",
+              "kind": 303,
+              "type": "PropertyAssignment",
+              "children": [
+                "autoSize",
+                true
+              ]
+            },
+            {
+              "raw": "timeScale: {\n    fixRightEdge: true,\n    lockVisibleTimeRangeOnResize: true,\n    timeVisible: true,\n    secondsVisible: false,\n  }",
+              "kind": 303,
+              "type": "PropertyAssignment",
+              "children": [
+                "timeScale",
+                {
+                  "fixRightEdge": true,
+                  "lockVisibleTimeRangeOnResize": true,
+                  "timeVisible": true,
+                  "secondsVisible": false,
+                  "children": [
+                    {
+                      "raw": "fixRightEdge: true",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "fixRightEdge",
+                        true
+                      ]
+                    },
+                    {
+                      "raw": "lockVisibleTimeRangeOnResize: true",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "lockVisibleTimeRangeOnResize",
+                        true
+                      ]
+                    },
+                    {
+                      "raw": "timeVisible: true",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "timeVisible",
+                        true
+                      ]
+                    },
+                    {
+                      "raw": "secondsVisible: false",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "secondsVisible",
+                        false
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "raw": "crosshair: {\n    vertLine: {\n      style: LineStyle.LargeDashed\n    },\n    horzLine: {\n      style: LineStyle.LargeDashed\n    },\n  }",
+              "kind": 303,
+              "type": "PropertyAssignment",
+              "children": [
+                "crosshair",
+                {
+                  "vertLine": {
+                    "style": {
+                      "raw": "LineStyle.LargeDashed",
+                      "kind": 211,
+                      "type": "PropertyAccessExpression"
+                    }
+                  },
+                  "horzLine": {
+                    "style": {
+                      "raw": "LineStyle.LargeDashed",
+                      "kind": 211,
+                      "type": "PropertyAccessExpression"
+                    }
+                  },
+                  "children": [
+                    {
+                      "raw": "vertLine: {\n      style: LineStyle.LargeDashed\n    }",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "vertLine",
+                        {
+                          "style": {
+                            "raw": "LineStyle.LargeDashed",
+                            "kind": 211,
+                            "type": "PropertyAccessExpression"
+                          },
+                          "children": [
+                            {
+                              "raw": "style: LineStyle.LargeDashed",
+                              "kind": 303,
+                              "type": "PropertyAssignment",
+                              "children": [
+                                "style",
+                                {
+                                  "raw": "LineStyle.LargeDashed",
+                                  "kind": 211,
+                                  "type": "PropertyAccessExpression",
+                                  "children": [
+                                    "LineStyle",
+                                    "LargeDashed"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "raw": "horzLine: {\n      style: LineStyle.LargeDashed\n    }",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "horzLine",
+                        {
+                          "style": {
+                            "raw": "LineStyle.LargeDashed",
+                            "kind": 211,
+                            "type": "PropertyAccessExpression"
+                          },
+                          "children": [
+                            {
+                              "raw": "style: LineStyle.LargeDashed",
+                              "kind": 303,
+                              "type": "PropertyAssignment",
+                              "children": [
+                                "style",
+                                {
+                                  "raw": "LineStyle.LargeDashed",
+                                  "kind": 211,
+                                  "type": "PropertyAccessExpression",
+                                  "children": [
+                                    "LineStyle",
+                                    "LargeDashed"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "kind": "variable",
       "name": "DEFAULT_DARK_CHART_OPTIONS",
-      "type": "DeepPartial<ChartOptions>",
-      "initializer": "deepmerge(\n  DEFAULT_CHART_OPTIONS, {\n  layout: {\n    background: { type: ColorType.Solid, color: #222 },\n    textColor: #DDD,\n  },\n  grid: {\n    vertLines: { color: #444 },\n    horzLines: { color: #444 },\n  },\n  timeScale: {\n    borderColor: #555,\n  },\n  leftPriceScale: {\n    borderColor: #555\n  },\n  rightPriceScale: {\n    borderColor: #555\n  },\n  crosshair: {\n    vertLine: {\n      color: #fff,\n      labelBackgroundColor: #aaa,\n      style: LineStyle.SparseDotted\n    },\n    horzLine: {\n      color: #fff,\n      labelBackgroundColor: #aaa,\n      style: LineStyle.SparseDotted\n    },\n  }\n})",
-      "raw": "DEFAULT_DARK_CHART_OPTIONS: DeepPartial<ChartOptions> = deepmerge(\n  DEFAULT_CHART_OPTIONS, {\n  layout: {\n    background: { type: ColorType.Solid, color: '#222' },\n    textColor: '#DDD',\n  },\n  grid: {\n    vertLines: { color: '#444' },\n    horzLines: { color: '#444' },\n  },\n  timeScale: {\n    borderColor: '#555',\n  },\n  leftPriceScale: {\n    borderColor: '#555'\n  },\n  rightPriceScale: {\n    borderColor: '#555'\n  },\n  crosshair: {\n    vertLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    },\n    horzLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    },\n  }\n})"
+      "type": {
+        "kind": "typeReference",
+        "name": "DeepPartial",
+        "raw": "DeepPartial<ChartOptions>"
+      },
+      "initializer": {
+        "kind": "callExpression",
+        "expression": "deepmerge",
+        "arguments": [
+          "DEFAULT_CHART_OPTIONS",
+          {
+            "layout": {
+              "background": {
+                "type": {
+                  "raw": "ColorType.Solid",
+                  "kind": 211,
+                  "type": "PropertyAccessExpression"
+                },
+                "color": "#222"
+              },
+              "textColor": "#DDD"
+            },
+            "grid": {
+              "vertLines": {
+                "color": "#444"
+              },
+              "horzLines": {
+                "color": "#444"
+              }
+            },
+            "timeScale": {
+              "borderColor": "#555"
+            },
+            "leftPriceScale": {
+              "borderColor": "#555"
+            },
+            "rightPriceScale": {
+              "borderColor": "#555"
+            },
+            "crosshair": {
+              "vertLine": {
+                "color": "#fff",
+                "labelBackgroundColor": "#aaa",
+                "style": {
+                  "raw": "LineStyle.SparseDotted",
+                  "kind": 211,
+                  "type": "PropertyAccessExpression"
+                }
+              },
+              "horzLine": {
+                "color": "#fff",
+                "labelBackgroundColor": "#aaa",
+                "style": {
+                  "raw": "LineStyle.SparseDotted",
+                  "kind": 211,
+                  "type": "PropertyAccessExpression"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "raw": "DEFAULT_DARK_CHART_OPTIONS: DeepPartial<ChartOptions> = deepmerge(\n  DEFAULT_CHART_OPTIONS, {\n  layout: {\n    background: { type: ColorType.Solid, color: '#222' },\n    textColor: '#DDD',\n  },\n  grid: {\n    vertLines: { color: '#444' },\n    horzLines: { color: '#444' },\n  },\n  timeScale: {\n    borderColor: '#555',\n  },\n  leftPriceScale: {\n    borderColor: '#555'\n  },\n  rightPriceScale: {\n    borderColor: '#555'\n  },\n  crosshair: {\n    vertLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    },\n    horzLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    },\n  }\n})",
+      "children": [
+        "DEFAULT_DARK_CHART_OPTIONS",
+        {
+          "kind": "typeReference",
+          "name": "DeepPartial",
+          "raw": "DeepPartial<ChartOptions>",
+          "children": [
+            "DeepPartial",
+            {
+              "kind": "typeReference",
+              "name": "ChartOptions",
+              "raw": "ChartOptions",
+              "children": [
+                "ChartOptions"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "callExpression",
+          "expression": "deepmerge",
+          "arguments": [
+            "DEFAULT_CHART_OPTIONS",
+            {
+              "layout": {
+                "background": {
+                  "type": {
+                    "raw": "ColorType.Solid",
+                    "kind": 211,
+                    "type": "PropertyAccessExpression"
+                  },
+                  "color": "#222"
+                },
+                "textColor": "#DDD"
+              },
+              "grid": {
+                "vertLines": {
+                  "color": "#444"
+                },
+                "horzLines": {
+                  "color": "#444"
+                }
+              },
+              "timeScale": {
+                "borderColor": "#555"
+              },
+              "leftPriceScale": {
+                "borderColor": "#555"
+              },
+              "rightPriceScale": {
+                "borderColor": "#555"
+              },
+              "crosshair": {
+                "vertLine": {
+                  "color": "#fff",
+                  "labelBackgroundColor": "#aaa",
+                  "style": {
+                    "raw": "LineStyle.SparseDotted",
+                    "kind": 211,
+                    "type": "PropertyAccessExpression"
+                  }
+                },
+                "horzLine": {
+                  "color": "#fff",
+                  "labelBackgroundColor": "#aaa",
+                  "style": {
+                    "raw": "LineStyle.SparseDotted",
+                    "kind": 211,
+                    "type": "PropertyAccessExpression"
+                  }
+                }
+              }
+            }
+          ],
+          "children": [
+            "deepmerge",
+            "DEFAULT_CHART_OPTIONS",
+            {
+              "layout": {
+                "background": {
+                  "type": {
+                    "raw": "ColorType.Solid",
+                    "kind": 211,
+                    "type": "PropertyAccessExpression"
+                  },
+                  "color": "#222"
+                },
+                "textColor": "#DDD"
+              },
+              "grid": {
+                "vertLines": {
+                  "color": "#444"
+                },
+                "horzLines": {
+                  "color": "#444"
+                }
+              },
+              "timeScale": {
+                "borderColor": "#555"
+              },
+              "leftPriceScale": {
+                "borderColor": "#555"
+              },
+              "rightPriceScale": {
+                "borderColor": "#555"
+              },
+              "crosshair": {
+                "vertLine": {
+                  "color": "#fff",
+                  "labelBackgroundColor": "#aaa",
+                  "style": {
+                    "raw": "LineStyle.SparseDotted",
+                    "kind": 211,
+                    "type": "PropertyAccessExpression"
+                  }
+                },
+                "horzLine": {
+                  "color": "#fff",
+                  "labelBackgroundColor": "#aaa",
+                  "style": {
+                    "raw": "LineStyle.SparseDotted",
+                    "kind": 211,
+                    "type": "PropertyAccessExpression"
+                  }
+                }
+              },
+              "children": [
+                {
+                  "raw": "layout: {\n    background: { type: ColorType.Solid, color: '#222' },\n    textColor: '#DDD',\n  }",
+                  "kind": 303,
+                  "type": "PropertyAssignment",
+                  "children": [
+                    "layout",
+                    {
+                      "background": {
+                        "type": {
+                          "raw": "ColorType.Solid",
+                          "kind": 211,
+                          "type": "PropertyAccessExpression"
+                        },
+                        "color": "#222"
+                      },
+                      "textColor": "#DDD",
+                      "children": [
+                        {
+                          "raw": "background: { type: ColorType.Solid, color: '#222' }",
+                          "kind": 303,
+                          "type": "PropertyAssignment",
+                          "children": [
+                            "background",
+                            {
+                              "type": {
+                                "raw": "ColorType.Solid",
+                                "kind": 211,
+                                "type": "PropertyAccessExpression"
+                              },
+                              "color": "#222",
+                              "children": [
+                                {
+                                  "raw": "type: ColorType.Solid",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "type",
+                                    {
+                                      "raw": "ColorType.Solid",
+                                      "kind": 211,
+                                      "type": "PropertyAccessExpression",
+                                      "children": [
+                                        "ColorType",
+                                        "Solid"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "raw": "color: '#222'",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "color",
+                                    "#222"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "raw": "textColor: '#DDD'",
+                          "kind": 303,
+                          "type": "PropertyAssignment",
+                          "children": [
+                            "textColor",
+                            "#DDD"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "raw": "grid: {\n    vertLines: { color: '#444' },\n    horzLines: { color: '#444' },\n  }",
+                  "kind": 303,
+                  "type": "PropertyAssignment",
+                  "children": [
+                    "grid",
+                    {
+                      "vertLines": {
+                        "color": "#444"
+                      },
+                      "horzLines": {
+                        "color": "#444"
+                      },
+                      "children": [
+                        {
+                          "raw": "vertLines: { color: '#444' }",
+                          "kind": 303,
+                          "type": "PropertyAssignment",
+                          "children": [
+                            "vertLines",
+                            {
+                              "color": "#444",
+                              "children": [
+                                {
+                                  "raw": "color: '#444'",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "color",
+                                    "#444"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "raw": "horzLines: { color: '#444' }",
+                          "kind": 303,
+                          "type": "PropertyAssignment",
+                          "children": [
+                            "horzLines",
+                            {
+                              "color": "#444",
+                              "children": [
+                                {
+                                  "raw": "color: '#444'",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "color",
+                                    "#444"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "raw": "timeScale: {\n    borderColor: '#555',\n  }",
+                  "kind": 303,
+                  "type": "PropertyAssignment",
+                  "children": [
+                    "timeScale",
+                    {
+                      "borderColor": "#555",
+                      "children": [
+                        {
+                          "raw": "borderColor: '#555'",
+                          "kind": 303,
+                          "type": "PropertyAssignment",
+                          "children": [
+                            "borderColor",
+                            "#555"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "raw": "leftPriceScale: {\n    borderColor: '#555'\n  }",
+                  "kind": 303,
+                  "type": "PropertyAssignment",
+                  "children": [
+                    "leftPriceScale",
+                    {
+                      "borderColor": "#555",
+                      "children": [
+                        {
+                          "raw": "borderColor: '#555'",
+                          "kind": 303,
+                          "type": "PropertyAssignment",
+                          "children": [
+                            "borderColor",
+                            "#555"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "raw": "rightPriceScale: {\n    borderColor: '#555'\n  }",
+                  "kind": 303,
+                  "type": "PropertyAssignment",
+                  "children": [
+                    "rightPriceScale",
+                    {
+                      "borderColor": "#555",
+                      "children": [
+                        {
+                          "raw": "borderColor: '#555'",
+                          "kind": 303,
+                          "type": "PropertyAssignment",
+                          "children": [
+                            "borderColor",
+                            "#555"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "raw": "crosshair: {\n    vertLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    },\n    horzLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    },\n  }",
+                  "kind": 303,
+                  "type": "PropertyAssignment",
+                  "children": [
+                    "crosshair",
+                    {
+                      "vertLine": {
+                        "color": "#fff",
+                        "labelBackgroundColor": "#aaa",
+                        "style": {
+                          "raw": "LineStyle.SparseDotted",
+                          "kind": 211,
+                          "type": "PropertyAccessExpression"
+                        }
+                      },
+                      "horzLine": {
+                        "color": "#fff",
+                        "labelBackgroundColor": "#aaa",
+                        "style": {
+                          "raw": "LineStyle.SparseDotted",
+                          "kind": 211,
+                          "type": "PropertyAccessExpression"
+                        }
+                      },
+                      "children": [
+                        {
+                          "raw": "vertLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    }",
+                          "kind": 303,
+                          "type": "PropertyAssignment",
+                          "children": [
+                            "vertLine",
+                            {
+                              "color": "#fff",
+                              "labelBackgroundColor": "#aaa",
+                              "style": {
+                                "raw": "LineStyle.SparseDotted",
+                                "kind": 211,
+                                "type": "PropertyAccessExpression"
+                              },
+                              "children": [
+                                {
+                                  "raw": "color: '#fff'",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "color",
+                                    "#fff"
+                                  ]
+                                },
+                                {
+                                  "raw": "labelBackgroundColor: '#aaa'",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "labelBackgroundColor",
+                                    "#aaa"
+                                  ]
+                                },
+                                {
+                                  "raw": "style: LineStyle.SparseDotted",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "style",
+                                    {
+                                      "raw": "LineStyle.SparseDotted",
+                                      "kind": 211,
+                                      "type": "PropertyAccessExpression",
+                                      "children": [
+                                        "LineStyle",
+                                        "SparseDotted"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "raw": "horzLine: {\n      color: '#fff',\n      labelBackgroundColor: '#aaa',\n      style: LineStyle.SparseDotted\n    }",
+                          "kind": 303,
+                          "type": "PropertyAssignment",
+                          "children": [
+                            "horzLine",
+                            {
+                              "color": "#fff",
+                              "labelBackgroundColor": "#aaa",
+                              "style": {
+                                "raw": "LineStyle.SparseDotted",
+                                "kind": 211,
+                                "type": "PropertyAccessExpression"
+                              },
+                              "children": [
+                                {
+                                  "raw": "color: '#fff'",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "color",
+                                    "#fff"
+                                  ]
+                                },
+                                {
+                                  "raw": "labelBackgroundColor: '#aaa'",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "labelBackgroundColor",
+                                    "#aaa"
+                                  ]
+                                },
+                                {
+                                  "raw": "style: LineStyle.SparseDotted",
+                                  "kind": 303,
+                                  "type": "PropertyAssignment",
+                                  "children": [
+                                    "style",
+                                    {
+                                      "raw": "LineStyle.SparseDotted",
+                                      "kind": 211,
+                                      "type": "PropertyAccessExpression",
+                                      "children": [
+                                        "LineStyle",
+                                        "SparseDotted"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "kind": "class",
       "name": "TVChartDirective",
+      "typeParameters": [
+        {
+          "kind": "typeParameter",
+          "name": "T",
+          "constraint": {
+            "kind": "typeReference",
+            "name": "SeriesType",
+            "raw": "SeriesType"
+          },
+          "raw": "T extends SeriesType"
+        },
+        {
+          "kind": "typeParameter",
+          "name": "HorzScaleItem",
+          "raw": "HorzScaleItem"
+        }
+      ],
+      "heritage": [
+        {
+          "kind": "heritage",
+          "token": "implements",
+          "types": [
+            {
+              "kind": "expressionWithTypeArguments",
+              "expression": "OnInit",
+              "raw": "OnInit"
+            },
+            {
+              "kind": "expressionWithTypeArguments",
+              "expression": "OnDestroy",
+              "raw": "OnDestroy"
+            }
+          ]
+        }
+      ],
       "decorators": [
         {
           "kind": "decorator",
@@ -160,6 +979,185 @@
       "keywords": [
         "export"
       ],
+      "members": [
+        {
+          "kind": "property",
+          "name": "type",
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": {
+              "raw": "input.required",
+              "kind": 211,
+              "type": "PropertyAccessExpression"
+            },
+            "typeArguments": [
+              {
+                "kind": "typeReference",
+                "name": "T",
+                "raw": "T"
+              }
+            ],
+            "arguments": [
+              {
+                "alias": "tvChart"
+              }
+            ]
+          },
+          "signature": "type = [object Object]",
+          "raw": "type = input.required<T>({alias: 'tvChart'});"
+        },
+        {
+          "kind": "property",
+          "name": "seriesOptions",
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": "input",
+            "typeArguments": [
+              {
+                "raw": "SeriesPartialOptionsMap[T]",
+                "kind": 199,
+                "type": "IndexedAccessType"
+              }
+            ],
+            "arguments": []
+          },
+          "signature": "seriesOptions = [object Object]",
+          "raw": "seriesOptions = input<SeriesPartialOptionsMap[T]>();"
+        },
+        {
+          "kind": "property",
+          "name": "data",
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": "input",
+            "typeArguments": [
+              {
+                "raw": "SeriesDataItemTypeMap<HorzScaleItem>[T][]",
+                "kind": 188,
+                "type": "ArrayType"
+              }
+            ],
+            "arguments": []
+          },
+          "signature": "data = [object Object]",
+          "raw": "data = input<SeriesDataItemTypeMap<HorzScaleItem>[T][]>();"
+        },
+        {
+          "kind": "property",
+          "name": {
+            "raw": "#inputs",
+            "kind": 81,
+            "type": "PrivateIdentifier"
+          },
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": "inject",
+            "arguments": [
+              "TVChartInputsDirective"
+            ]
+          },
+          "signature": "readonly [object Object] = [object Object]",
+          "raw": "readonly #inputs = inject(TVChartInputsDirective);",
+          "keywords": [
+            "readonly"
+          ]
+        },
+        {
+          "kind": "property",
+          "name": {
+            "raw": "#element",
+            "kind": 81,
+            "type": "PrivateIdentifier"
+          },
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": {
+            "raw": "inject(ElementRef<HTMLElement>).nativeElement",
+            "kind": 211,
+            "type": "PropertyAccessExpression"
+          },
+          "signature": "readonly [object Object] = [object Object]",
+          "raw": "readonly #element = inject(ElementRef<HTMLElement>).nativeElement;",
+          "keywords": [
+            "readonly"
+          ]
+        },
+        {
+          "kind": "property",
+          "name": {
+            "raw": "#chart",
+            "kind": 81,
+            "type": "PrivateIdentifier"
+          },
+          "optional": false,
+          "exclamation": false,
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": "inject",
+            "arguments": [
+              {
+                "kind": "expressionWithTypeArguments",
+                "expression": "TVChart",
+                "typeArguments": [
+                  {
+                    "kind": "typeReference",
+                    "name": "T",
+                    "raw": "T"
+                  },
+                  {
+                    "kind": "typeReference",
+                    "name": "HorzScaleItem",
+                    "raw": "HorzScaleItem"
+                  }
+                ],
+                "raw": "TVChart<T, HorzScaleItem>"
+              }
+            ]
+          },
+          "signature": "readonly [object Object] = [object Object]",
+          "raw": "readonly #chart = inject(TVChart<T, HorzScaleItem>);",
+          "keywords": [
+            "readonly"
+          ]
+        },
+        {
+          "kind": "constructor",
+          "parameters": [
+            {
+              "kind": "parameter",
+              "name": "element",
+              "type": {
+                "kind": "typeReference",
+                "name": "ElementRef",
+                "raw": "ElementRef"
+              },
+              "optional": false,
+              "signature": "element: [object Object]",
+              "raw": "element: ElementRef"
+            }
+          ]
+        },
+        {
+          "kind": "method",
+          "name": "ngOnInit",
+          "parameters": [],
+          "signature": "ngOnInit(): void"
+        },
+        {
+          "kind": "method",
+          "name": "ngOnDestroy",
+          "parameters": [],
+          "signature": "ngOnDestroy(): void"
+        }
+      ],
       "isUI": true,
       "children": [
         {
@@ -184,7 +1182,104 @@
             ]
           },
           "signature": "@Directive({selector: [tvChart], standalone: true, providers: tvChartProviderWithExistenceCheck, hostDirectives: [object Object],tvChartOutputsDirectiveHostDef})",
-          "raw": "@Directive({\n  selector: '[tvChart]',\n  standalone: true,\n  providers: [tvChartProviderWithExistenceCheck],\n  hostDirectives: [\n    {\n      directive: TVChartInputsDirective,\n      inputs: ['id', 'options', 'markers']\n    },\n    tvChartOutputsDirectiveHostDef\n  ]\n})"
+          "raw": "@Directive({\n  selector: '[tvChart]',\n  standalone: true,\n  providers: [tvChartProviderWithExistenceCheck],\n  hostDirectives: [\n    {\n      directive: TVChartInputsDirective,\n      inputs: ['id', 'options', 'markers']\n    },\n    tvChartOutputsDirectiveHostDef\n  ]\n})",
+          "children": [
+            {
+              "kind": "callExpression",
+              "expression": "Directive",
+              "arguments": [
+                {
+                  "selector": "[tvChart]",
+                  "standalone": true,
+                  "providers": [
+                    "tvChartProviderWithExistenceCheck"
+                  ],
+                  "hostDirectives": [
+                    {
+                      "directive": "TVChartInputsDirective",
+                      "inputs": [
+                        "id",
+                        "options",
+                        "markers"
+                      ]
+                    },
+                    "tvChartOutputsDirectiveHostDef"
+                  ]
+                }
+              ],
+              "children": [
+                "Directive",
+                {
+                  "selector": "[tvChart]",
+                  "standalone": true,
+                  "providers": [
+                    "tvChartProviderWithExistenceCheck"
+                  ],
+                  "hostDirectives": [
+                    {
+                      "directive": "TVChartInputsDirective",
+                      "inputs": [
+                        "id",
+                        "options",
+                        "markers"
+                      ]
+                    },
+                    "tvChartOutputsDirectiveHostDef"
+                  ],
+                  "children": [
+                    {
+                      "raw": "selector: '[tvChart]'",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "selector",
+                        "[tvChart]"
+                      ]
+                    },
+                    {
+                      "raw": "standalone: true",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "standalone",
+                        true
+                      ]
+                    },
+                    {
+                      "raw": "providers: [tvChartProviderWithExistenceCheck]",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "providers",
+                        [
+                          "tvChartProviderWithExistenceCheck"
+                        ]
+                      ]
+                    },
+                    {
+                      "raw": "hostDirectives: [\n    {\n      directive: TVChartInputsDirective,\n      inputs: ['id', 'options', 'markers']\n    },\n    tvChartOutputsDirectiveHostDef\n  ]",
+                      "kind": 303,
+                      "type": "PropertyAssignment",
+                      "children": [
+                        "hostDirectives",
+                        [
+                          {
+                            "directive": "TVChartInputsDirective",
+                            "inputs": [
+                              "id",
+                              "options",
+                              "markers"
+                            ]
+                          },
+                          "tvChartOutputsDirectiveHostDef"
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "raw": "export",
@@ -195,14 +1290,21 @@
         {
           "kind": "typeParameter",
           "name": "T",
-          "constraint": "SeriesType",
+          "constraint": {
+            "kind": "typeReference",
+            "name": "SeriesType",
+            "raw": "SeriesType"
+          },
           "raw": "T extends SeriesType",
           "children": [
             "T",
             {
               "kind": "typeReference",
               "name": "SeriesType",
-              "raw": "SeriesType"
+              "raw": "SeriesType",
+              "children": [
+                "SeriesType"
+              ]
             }
           ]
         },
@@ -216,10 +1318,36 @@
         },
         {
           "kind": "heritage",
-          "keyword": "implements",
+          "token": "implements",
           "types": [
-            "OnInit",
-            "OnDestroy"
+            {
+              "kind": "expressionWithTypeArguments",
+              "expression": "OnInit",
+              "raw": "OnInit"
+            },
+            {
+              "kind": "expressionWithTypeArguments",
+              "expression": "OnDestroy",
+              "raw": "OnDestroy"
+            }
+          ],
+          "children": [
+            {
+              "kind": "expressionWithTypeArguments",
+              "expression": "OnInit",
+              "raw": "OnInit",
+              "children": [
+                "OnInit"
+              ]
+            },
+            {
+              "kind": "expressionWithTypeArguments",
+              "expression": "OnDestroy",
+              "raw": "OnDestroy",
+              "children": [
+                "OnDestroy"
+              ]
+            }
           ]
         },
         {
@@ -227,15 +1355,49 @@
           "name": "type",
           "optional": false,
           "exclamation": false,
-          "initializedValue": "input.required<T>({alias: tvChart})",
-          "signature": "type = input.required<T>({alias: tvChart})",
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": {
+              "raw": "input.required",
+              "kind": 211,
+              "type": "PropertyAccessExpression"
+            },
+            "typeArguments": [
+              {
+                "kind": "typeReference",
+                "name": "T",
+                "raw": "T"
+              }
+            ],
+            "arguments": [
+              {
+                "alias": "tvChart"
+              }
+            ]
+          },
+          "signature": "type = [object Object]",
           "raw": "type = input.required<T>({alias: 'tvChart'});",
           "children": [
             "type",
             {
-              "raw": "input.required<T>({alias: 'tvChart'})",
-              "kind": 213,
-              "type": "CallExpression",
+              "kind": "callExpression",
+              "expression": {
+                "raw": "input.required",
+                "kind": 211,
+                "type": "PropertyAccessExpression"
+              },
+              "typeArguments": [
+                {
+                  "kind": "typeReference",
+                  "name": "T",
+                  "raw": "T"
+                }
+              ],
+              "arguments": [
+                {
+                  "alias": "tvChart"
+                }
+              ],
               "children": [
                 {
                   "raw": "input.required",
@@ -249,7 +1411,10 @@
                 {
                   "kind": "typeReference",
                   "name": "T",
-                  "raw": "T"
+                  "raw": "T",
+                  "children": [
+                    "T"
+                  ]
                 },
                 {
                   "alias": "tvChart",
@@ -274,15 +1439,33 @@
           "name": "seriesOptions",
           "optional": false,
           "exclamation": false,
-          "initializedValue": "input<SeriesPartialOptionsMap[T]>()",
-          "signature": "seriesOptions = input<SeriesPartialOptionsMap[T]>()",
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": "input",
+            "typeArguments": [
+              {
+                "raw": "SeriesPartialOptionsMap[T]",
+                "kind": 199,
+                "type": "IndexedAccessType"
+              }
+            ],
+            "arguments": []
+          },
+          "signature": "seriesOptions = [object Object]",
           "raw": "seriesOptions = input<SeriesPartialOptionsMap[T]>();",
           "children": [
             "seriesOptions",
             {
-              "raw": "input<SeriesPartialOptionsMap[T]>()",
-              "kind": 213,
-              "type": "CallExpression",
+              "kind": "callExpression",
+              "expression": "input",
+              "typeArguments": [
+                {
+                  "raw": "SeriesPartialOptionsMap[T]",
+                  "kind": 199,
+                  "type": "IndexedAccessType"
+                }
+              ],
+              "arguments": [],
               "children": [
                 "input",
                 {
@@ -293,12 +1476,18 @@
                     {
                       "kind": "typeReference",
                       "name": "SeriesPartialOptionsMap",
-                      "raw": "SeriesPartialOptionsMap"
+                      "raw": "SeriesPartialOptionsMap",
+                      "children": [
+                        "SeriesPartialOptionsMap"
+                      ]
                     },
                     {
                       "kind": "typeReference",
                       "name": "T",
-                      "raw": "T"
+                      "raw": "T",
+                      "children": [
+                        "T"
+                      ]
                     }
                   ]
                 }
@@ -311,15 +1500,33 @@
           "name": "data",
           "optional": false,
           "exclamation": false,
-          "initializedValue": "input<SeriesDataItemTypeMap<HorzScaleItem>[T][]>()",
-          "signature": "data = input<SeriesDataItemTypeMap<HorzScaleItem>[T][]>()",
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": "input",
+            "typeArguments": [
+              {
+                "raw": "SeriesDataItemTypeMap<HorzScaleItem>[T][]",
+                "kind": 188,
+                "type": "ArrayType"
+              }
+            ],
+            "arguments": []
+          },
+          "signature": "data = [object Object]",
           "raw": "data = input<SeriesDataItemTypeMap<HorzScaleItem>[T][]>();",
           "children": [
             "data",
             {
-              "raw": "input<SeriesDataItemTypeMap<HorzScaleItem>[T][]>()",
-              "kind": 213,
-              "type": "CallExpression",
+              "kind": "callExpression",
+              "expression": "input",
+              "typeArguments": [
+                {
+                  "raw": "SeriesDataItemTypeMap<HorzScaleItem>[T][]",
+                  "kind": 188,
+                  "type": "ArrayType"
+                }
+              ],
+              "arguments": [],
               "children": [
                 "input",
                 {
@@ -335,12 +1542,26 @@
                         {
                           "kind": "typeReference",
                           "name": "SeriesDataItemTypeMap",
-                          "raw": "SeriesDataItemTypeMap<HorzScaleItem>"
+                          "raw": "SeriesDataItemTypeMap<HorzScaleItem>",
+                          "children": [
+                            "SeriesDataItemTypeMap",
+                            {
+                              "kind": "typeReference",
+                              "name": "HorzScaleItem",
+                              "raw": "HorzScaleItem",
+                              "children": [
+                                "HorzScaleItem"
+                              ]
+                            }
+                          ]
                         },
                         {
                           "kind": "typeReference",
                           "name": "T",
-                          "raw": "T"
+                          "raw": "T",
+                          "children": [
+                            "T"
+                          ]
                         }
                       ]
                     }
@@ -352,11 +1573,21 @@
         },
         {
           "kind": "property",
-          "name": "#inputs",
+          "name": {
+            "raw": "#inputs",
+            "kind": 81,
+            "type": "PrivateIdentifier"
+          },
           "optional": false,
           "exclamation": false,
-          "initializedValue": "inject(TVChartInputsDirective)",
-          "signature": "readonly #inputs = inject(TVChartInputsDirective)",
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": "inject",
+            "arguments": [
+              "TVChartInputsDirective"
+            ]
+          },
+          "signature": "readonly [object Object] = [object Object]",
           "raw": "readonly #inputs = inject(TVChartInputsDirective);",
           "keywords": [
             "readonly"
@@ -373,9 +1604,11 @@
               "type": "PrivateIdentifier"
             },
             {
-              "raw": "inject(TVChartInputsDirective)",
-              "kind": 213,
-              "type": "CallExpression",
+              "kind": "callExpression",
+              "expression": "inject",
+              "arguments": [
+                "TVChartInputsDirective"
+              ],
               "children": [
                 "inject",
                 "TVChartInputsDirective"
@@ -385,11 +1618,19 @@
         },
         {
           "kind": "property",
-          "name": "#element",
+          "name": {
+            "raw": "#element",
+            "kind": 81,
+            "type": "PrivateIdentifier"
+          },
           "optional": false,
           "exclamation": false,
-          "initializedValue": "inject(ElementRef<HTMLElement>).nativeElement",
-          "signature": "readonly #element = inject(ElementRef<HTMLElement>).nativeElement",
+          "initializedValue": {
+            "raw": "inject(ElementRef<HTMLElement>).nativeElement",
+            "kind": 211,
+            "type": "PropertyAccessExpression"
+          },
+          "signature": "readonly [object Object] = [object Object]",
           "raw": "readonly #element = inject(ElementRef<HTMLElement>).nativeElement;",
           "keywords": [
             "readonly"
@@ -411,16 +1652,33 @@
               "type": "PropertyAccessExpression",
               "children": [
                 {
-                  "raw": "inject(ElementRef<HTMLElement>)",
-                  "kind": 213,
-                  "type": "CallExpression",
+                  "kind": "callExpression",
+                  "expression": "inject",
+                  "arguments": [
+                    {
+                      "kind": "expressionWithTypeArguments",
+                      "expression": "ElementRef",
+                      "typeArguments": [
+                        {
+                          "kind": "typeReference",
+                          "name": "HTMLElement",
+                          "raw": "HTMLElement"
+                        }
+                      ],
+                      "raw": "ElementRef<HTMLElement>"
+                    }
+                  ],
                   "children": [
                     "inject",
                     {
                       "kind": "expressionWithTypeArguments",
                       "expression": "ElementRef",
                       "typeArguments": [
-                        "HTMLElement"
+                        {
+                          "kind": "typeReference",
+                          "name": "HTMLElement",
+                          "raw": "HTMLElement"
+                        }
                       ],
                       "raw": "ElementRef<HTMLElement>",
                       "children": [
@@ -428,7 +1686,10 @@
                         {
                           "kind": "typeReference",
                           "name": "HTMLElement",
-                          "raw": "HTMLElement"
+                          "raw": "HTMLElement",
+                          "children": [
+                            "HTMLElement"
+                          ]
                         }
                       ]
                     }
@@ -441,11 +1702,37 @@
         },
         {
           "kind": "property",
-          "name": "#chart",
+          "name": {
+            "raw": "#chart",
+            "kind": 81,
+            "type": "PrivateIdentifier"
+          },
           "optional": false,
           "exclamation": false,
-          "initializedValue": "inject(TVChart<T, HorzScaleItem>)",
-          "signature": "readonly #chart = inject(TVChart<T, HorzScaleItem>)",
+          "initializedValue": {
+            "kind": "callExpression",
+            "expression": "inject",
+            "arguments": [
+              {
+                "kind": "expressionWithTypeArguments",
+                "expression": "TVChart",
+                "typeArguments": [
+                  {
+                    "kind": "typeReference",
+                    "name": "T",
+                    "raw": "T"
+                  },
+                  {
+                    "kind": "typeReference",
+                    "name": "HorzScaleItem",
+                    "raw": "HorzScaleItem"
+                  }
+                ],
+                "raw": "TVChart<T, HorzScaleItem>"
+              }
+            ]
+          },
+          "signature": "readonly [object Object] = [object Object]",
           "raw": "readonly #chart = inject(TVChart<T, HorzScaleItem>);",
           "keywords": [
             "readonly"
@@ -462,21 +1749,13 @@
               "type": "PrivateIdentifier"
             },
             {
-              "raw": "inject(TVChart<T, HorzScaleItem>)",
-              "kind": 213,
-              "type": "CallExpression",
-              "children": [
-                "inject",
+              "kind": "callExpression",
+              "expression": "inject",
+              "arguments": [
                 {
                   "kind": "expressionWithTypeArguments",
                   "expression": "TVChart",
                   "typeArguments": [
-                    "T",
-                    "HorzScaleItem"
-                  ],
-                  "raw": "TVChart<T, HorzScaleItem>",
-                  "children": [
-                    "TVChart",
                     {
                       "kind": "typeReference",
                       "name": "T",
@@ -487,6 +1766,46 @@
                       "name": "HorzScaleItem",
                       "raw": "HorzScaleItem"
                     }
+                  ],
+                  "raw": "TVChart<T, HorzScaleItem>"
+                }
+              ],
+              "children": [
+                "inject",
+                {
+                  "kind": "expressionWithTypeArguments",
+                  "expression": "TVChart",
+                  "typeArguments": [
+                    {
+                      "kind": "typeReference",
+                      "name": "T",
+                      "raw": "T"
+                    },
+                    {
+                      "kind": "typeReference",
+                      "name": "HorzScaleItem",
+                      "raw": "HorzScaleItem"
+                    }
+                  ],
+                  "raw": "TVChart<T, HorzScaleItem>",
+                  "children": [
+                    "TVChart",
+                    {
+                      "kind": "typeReference",
+                      "name": "T",
+                      "raw": "T",
+                      "children": [
+                        "T"
+                      ]
+                    },
+                    {
+                      "kind": "typeReference",
+                      "name": "HorzScaleItem",
+                      "raw": "HorzScaleItem",
+                      "children": [
+                        "HorzScaleItem"
+                      ]
+                    }
                   ]
                 }
               ]
@@ -495,19 +1814,924 @@
         },
         {
           "kind": "constructor",
-          "parameters": []
+          "parameters": [
+            {
+              "kind": "parameter",
+              "name": "element",
+              "type": {
+                "kind": "typeReference",
+                "name": "ElementRef",
+                "raw": "ElementRef"
+              },
+              "optional": false,
+              "signature": "element: [object Object]",
+              "raw": "element: ElementRef"
+            }
+          ],
+          "children": [
+            {
+              "kind": "parameter",
+              "name": "element",
+              "type": {
+                "kind": "typeReference",
+                "name": "ElementRef",
+                "raw": "ElementRef"
+              },
+              "optional": false,
+              "signature": "element: [object Object]",
+              "raw": "element: ElementRef",
+              "children": [
+                "element",
+                {
+                  "kind": "typeReference",
+                  "name": "ElementRef",
+                  "raw": "ElementRef",
+                  "children": [
+                    "ElementRef"
+                  ]
+                }
+              ]
+            },
+            {
+              "raw": "{\n\n    effect(() => {\n      this.#chart.applyOptions(this.#inputs.options());\n    });\n\n    effect(() => {\n      this.#chart.applySeriesOptions(this.seriesOptions());\n    });\n\n    effect(() => {\n      this.#chart.setData(this.data() || []);\n    });\n\n    effect(() => {\n      this.#chart.setMarkers(this.#inputs.markers() || []);\n    });\n  }",
+              "kind": 241,
+              "type": "Block",
+              "children": [
+                {
+                  "raw": "effect(() => {\n      this.#chart.applyOptions(this.#inputs.options());\n    });",
+                  "kind": 244,
+                  "type": "ExpressionStatement",
+                  "children": [
+                    {
+                      "kind": "callExpression",
+                      "expression": "effect",
+                      "arguments": [
+                        {
+                          "raw": "() => {\n      this.#chart.applyOptions(this.#inputs.options());\n    }",
+                          "kind": 219,
+                          "type": "ArrowFunction"
+                        }
+                      ],
+                      "children": [
+                        "effect",
+                        {
+                          "raw": "() => {\n      this.#chart.applyOptions(this.#inputs.options());\n    }",
+                          "kind": 219,
+                          "type": "ArrowFunction",
+                          "children": [
+                            {
+                              "raw": "=>",
+                              "kind": 39,
+                              "type": "EqualsGreaterThanToken"
+                            },
+                            {
+                              "raw": "{\n      this.#chart.applyOptions(this.#inputs.options());\n    }",
+                              "kind": 241,
+                              "type": "Block",
+                              "children": [
+                                {
+                                  "raw": "this.#chart.applyOptions(this.#inputs.options());",
+                                  "kind": 244,
+                                  "type": "ExpressionStatement",
+                                  "children": [
+                                    {
+                                      "kind": "callExpression",
+                                      "expression": {
+                                        "raw": "this.#chart.applyOptions",
+                                        "kind": 211,
+                                        "type": "PropertyAccessExpression"
+                                      },
+                                      "arguments": [
+                                        {
+                                          "kind": "callExpression",
+                                          "expression": {
+                                            "raw": "this.#inputs.options",
+                                            "kind": 211,
+                                            "type": "PropertyAccessExpression"
+                                          },
+                                          "arguments": []
+                                        }
+                                      ],
+                                      "children": [
+                                        {
+                                          "raw": "this.#chart.applyOptions",
+                                          "kind": 211,
+                                          "type": "PropertyAccessExpression",
+                                          "children": [
+                                            {
+                                              "raw": "this.#chart",
+                                              "kind": 211,
+                                              "type": "PropertyAccessExpression",
+                                              "children": [
+                                                {
+                                                  "raw": "this",
+                                                  "kind": 110,
+                                                  "type": "ThisKeyword"
+                                                },
+                                                {
+                                                  "raw": "#chart",
+                                                  "kind": 81,
+                                                  "type": "PrivateIdentifier"
+                                                }
+                                              ]
+                                            },
+                                            "applyOptions"
+                                          ]
+                                        },
+                                        {
+                                          "kind": "callExpression",
+                                          "expression": {
+                                            "raw": "this.#inputs.options",
+                                            "kind": 211,
+                                            "type": "PropertyAccessExpression"
+                                          },
+                                          "arguments": [],
+                                          "children": [
+                                            {
+                                              "raw": "this.#inputs.options",
+                                              "kind": 211,
+                                              "type": "PropertyAccessExpression",
+                                              "children": [
+                                                {
+                                                  "raw": "this.#inputs",
+                                                  "kind": 211,
+                                                  "type": "PropertyAccessExpression",
+                                                  "children": [
+                                                    {
+                                                      "raw": "this",
+                                                      "kind": 110,
+                                                      "type": "ThisKeyword"
+                                                    },
+                                                    {
+                                                      "raw": "#inputs",
+                                                      "kind": 81,
+                                                      "type": "PrivateIdentifier"
+                                                    }
+                                                  ]
+                                                },
+                                                "options"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "raw": "effect(() => {\n      this.#chart.applySeriesOptions(this.seriesOptions());\n    });",
+                  "kind": 244,
+                  "type": "ExpressionStatement",
+                  "children": [
+                    {
+                      "kind": "callExpression",
+                      "expression": "effect",
+                      "arguments": [
+                        {
+                          "raw": "() => {\n      this.#chart.applySeriesOptions(this.seriesOptions());\n    }",
+                          "kind": 219,
+                          "type": "ArrowFunction"
+                        }
+                      ],
+                      "children": [
+                        "effect",
+                        {
+                          "raw": "() => {\n      this.#chart.applySeriesOptions(this.seriesOptions());\n    }",
+                          "kind": 219,
+                          "type": "ArrowFunction",
+                          "children": [
+                            {
+                              "raw": "=>",
+                              "kind": 39,
+                              "type": "EqualsGreaterThanToken"
+                            },
+                            {
+                              "raw": "{\n      this.#chart.applySeriesOptions(this.seriesOptions());\n    }",
+                              "kind": 241,
+                              "type": "Block",
+                              "children": [
+                                {
+                                  "raw": "this.#chart.applySeriesOptions(this.seriesOptions());",
+                                  "kind": 244,
+                                  "type": "ExpressionStatement",
+                                  "children": [
+                                    {
+                                      "kind": "callExpression",
+                                      "expression": {
+                                        "raw": "this.#chart.applySeriesOptions",
+                                        "kind": 211,
+                                        "type": "PropertyAccessExpression"
+                                      },
+                                      "arguments": [
+                                        {
+                                          "kind": "callExpression",
+                                          "expression": {
+                                            "raw": "this.seriesOptions",
+                                            "kind": 211,
+                                            "type": "PropertyAccessExpression"
+                                          },
+                                          "arguments": []
+                                        }
+                                      ],
+                                      "children": [
+                                        {
+                                          "raw": "this.#chart.applySeriesOptions",
+                                          "kind": 211,
+                                          "type": "PropertyAccessExpression",
+                                          "children": [
+                                            {
+                                              "raw": "this.#chart",
+                                              "kind": 211,
+                                              "type": "PropertyAccessExpression",
+                                              "children": [
+                                                {
+                                                  "raw": "this",
+                                                  "kind": 110,
+                                                  "type": "ThisKeyword"
+                                                },
+                                                {
+                                                  "raw": "#chart",
+                                                  "kind": 81,
+                                                  "type": "PrivateIdentifier"
+                                                }
+                                              ]
+                                            },
+                                            "applySeriesOptions"
+                                          ]
+                                        },
+                                        {
+                                          "kind": "callExpression",
+                                          "expression": {
+                                            "raw": "this.seriesOptions",
+                                            "kind": 211,
+                                            "type": "PropertyAccessExpression"
+                                          },
+                                          "arguments": [],
+                                          "children": [
+                                            {
+                                              "raw": "this.seriesOptions",
+                                              "kind": 211,
+                                              "type": "PropertyAccessExpression",
+                                              "children": [
+                                                {
+                                                  "raw": "this",
+                                                  "kind": 110,
+                                                  "type": "ThisKeyword"
+                                                },
+                                                "seriesOptions"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "raw": "effect(() => {\n      this.#chart.setData(this.data() || []);\n    });",
+                  "kind": 244,
+                  "type": "ExpressionStatement",
+                  "children": [
+                    {
+                      "kind": "callExpression",
+                      "expression": "effect",
+                      "arguments": [
+                        {
+                          "raw": "() => {\n      this.#chart.setData(this.data() || []);\n    }",
+                          "kind": 219,
+                          "type": "ArrowFunction"
+                        }
+                      ],
+                      "children": [
+                        "effect",
+                        {
+                          "raw": "() => {\n      this.#chart.setData(this.data() || []);\n    }",
+                          "kind": 219,
+                          "type": "ArrowFunction",
+                          "children": [
+                            {
+                              "raw": "=>",
+                              "kind": 39,
+                              "type": "EqualsGreaterThanToken"
+                            },
+                            {
+                              "raw": "{\n      this.#chart.setData(this.data() || []);\n    }",
+                              "kind": 241,
+                              "type": "Block",
+                              "children": [
+                                {
+                                  "raw": "this.#chart.setData(this.data() || []);",
+                                  "kind": 244,
+                                  "type": "ExpressionStatement",
+                                  "children": [
+                                    {
+                                      "kind": "callExpression",
+                                      "expression": {
+                                        "raw": "this.#chart.setData",
+                                        "kind": 211,
+                                        "type": "PropertyAccessExpression"
+                                      },
+                                      "arguments": [
+                                        {
+                                          "raw": "this.data() || []",
+                                          "kind": 226,
+                                          "type": "BinaryExpression"
+                                        }
+                                      ],
+                                      "children": [
+                                        {
+                                          "raw": "this.#chart.setData",
+                                          "kind": 211,
+                                          "type": "PropertyAccessExpression",
+                                          "children": [
+                                            {
+                                              "raw": "this.#chart",
+                                              "kind": 211,
+                                              "type": "PropertyAccessExpression",
+                                              "children": [
+                                                {
+                                                  "raw": "this",
+                                                  "kind": 110,
+                                                  "type": "ThisKeyword"
+                                                },
+                                                {
+                                                  "raw": "#chart",
+                                                  "kind": 81,
+                                                  "type": "PrivateIdentifier"
+                                                }
+                                              ]
+                                            },
+                                            "setData"
+                                          ]
+                                        },
+                                        {
+                                          "raw": "this.data() || []",
+                                          "kind": 226,
+                                          "type": "BinaryExpression",
+                                          "children": [
+                                            {
+                                              "kind": "callExpression",
+                                              "expression": {
+                                                "raw": "this.data",
+                                                "kind": 211,
+                                                "type": "PropertyAccessExpression"
+                                              },
+                                              "arguments": [],
+                                              "children": [
+                                                {
+                                                  "raw": "this.data",
+                                                  "kind": 211,
+                                                  "type": "PropertyAccessExpression",
+                                                  "children": [
+                                                    {
+                                                      "raw": "this",
+                                                      "kind": 110,
+                                                      "type": "ThisKeyword"
+                                                    },
+                                                    "data"
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "raw": "||",
+                                              "kind": 57,
+                                              "type": "BarBarToken"
+                                            },
+                                            []
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "raw": "effect(() => {\n      this.#chart.setMarkers(this.#inputs.markers() || []);\n    });",
+                  "kind": 244,
+                  "type": "ExpressionStatement",
+                  "children": [
+                    {
+                      "kind": "callExpression",
+                      "expression": "effect",
+                      "arguments": [
+                        {
+                          "raw": "() => {\n      this.#chart.setMarkers(this.#inputs.markers() || []);\n    }",
+                          "kind": 219,
+                          "type": "ArrowFunction"
+                        }
+                      ],
+                      "children": [
+                        "effect",
+                        {
+                          "raw": "() => {\n      this.#chart.setMarkers(this.#inputs.markers() || []);\n    }",
+                          "kind": 219,
+                          "type": "ArrowFunction",
+                          "children": [
+                            {
+                              "raw": "=>",
+                              "kind": 39,
+                              "type": "EqualsGreaterThanToken"
+                            },
+                            {
+                              "raw": "{\n      this.#chart.setMarkers(this.#inputs.markers() || []);\n    }",
+                              "kind": 241,
+                              "type": "Block",
+                              "children": [
+                                {
+                                  "raw": "this.#chart.setMarkers(this.#inputs.markers() || []);",
+                                  "kind": 244,
+                                  "type": "ExpressionStatement",
+                                  "children": [
+                                    {
+                                      "kind": "callExpression",
+                                      "expression": {
+                                        "raw": "this.#chart.setMarkers",
+                                        "kind": 211,
+                                        "type": "PropertyAccessExpression"
+                                      },
+                                      "arguments": [
+                                        {
+                                          "raw": "this.#inputs.markers() || []",
+                                          "kind": 226,
+                                          "type": "BinaryExpression"
+                                        }
+                                      ],
+                                      "children": [
+                                        {
+                                          "raw": "this.#chart.setMarkers",
+                                          "kind": 211,
+                                          "type": "PropertyAccessExpression",
+                                          "children": [
+                                            {
+                                              "raw": "this.#chart",
+                                              "kind": 211,
+                                              "type": "PropertyAccessExpression",
+                                              "children": [
+                                                {
+                                                  "raw": "this",
+                                                  "kind": 110,
+                                                  "type": "ThisKeyword"
+                                                },
+                                                {
+                                                  "raw": "#chart",
+                                                  "kind": 81,
+                                                  "type": "PrivateIdentifier"
+                                                }
+                                              ]
+                                            },
+                                            "setMarkers"
+                                          ]
+                                        },
+                                        {
+                                          "raw": "this.#inputs.markers() || []",
+                                          "kind": 226,
+                                          "type": "BinaryExpression",
+                                          "children": [
+                                            {
+                                              "kind": "callExpression",
+                                              "expression": {
+                                                "raw": "this.#inputs.markers",
+                                                "kind": 211,
+                                                "type": "PropertyAccessExpression"
+                                              },
+                                              "arguments": [],
+                                              "children": [
+                                                {
+                                                  "raw": "this.#inputs.markers",
+                                                  "kind": 211,
+                                                  "type": "PropertyAccessExpression",
+                                                  "children": [
+                                                    {
+                                                      "raw": "this.#inputs",
+                                                      "kind": 211,
+                                                      "type": "PropertyAccessExpression",
+                                                      "children": [
+                                                        {
+                                                          "raw": "this",
+                                                          "kind": 110,
+                                                          "type": "ThisKeyword"
+                                                        },
+                                                        {
+                                                          "raw": "#inputs",
+                                                          "kind": 81,
+                                                          "type": "PrivateIdentifier"
+                                                        }
+                                                      ]
+                                                    },
+                                                    "markers"
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "raw": "||",
+                                              "kind": 57,
+                                              "type": "BarBarToken"
+                                            },
+                                            []
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "kind": "method",
           "name": "ngOnInit",
           "parameters": [],
-          "signature": "ngOnInit(): void"
+          "signature": "ngOnInit(): void",
+          "children": [
+            "ngOnInit",
+            {
+              "raw": "{\n    const options = deepmerge(DEFAULT_CHART_OPTIONS, this.#inputs.options() || {});\n    this.#chart.initialise(this.#element, this.type(), options, this.seriesOptions() || {}, this.#inputs.id());\n  }",
+              "kind": 241,
+              "type": "Block",
+              "children": [
+                {
+                  "raw": "const options = deepmerge(DEFAULT_CHART_OPTIONS, this.#inputs.options() || {});",
+                  "kind": 243,
+                  "type": "FirstStatement",
+                  "children": [
+                    {
+                      "raw": "const options = deepmerge(DEFAULT_CHART_OPTIONS, this.#inputs.options() || {})",
+                      "kind": 261,
+                      "type": "VariableDeclarationList",
+                      "children": [
+                        {
+                          "kind": "variable",
+                          "name": "options",
+                          "initializer": {
+                            "kind": "callExpression",
+                            "expression": "deepmerge",
+                            "arguments": [
+                              "DEFAULT_CHART_OPTIONS",
+                              {
+                                "raw": "this.#inputs.options() || {}",
+                                "kind": 226,
+                                "type": "BinaryExpression"
+                              }
+                            ]
+                          },
+                          "raw": "options = deepmerge(DEFAULT_CHART_OPTIONS, this.#inputs.options() || {})",
+                          "children": [
+                            "options",
+                            {
+                              "kind": "callExpression",
+                              "expression": "deepmerge",
+                              "arguments": [
+                                "DEFAULT_CHART_OPTIONS",
+                                {
+                                  "raw": "this.#inputs.options() || {}",
+                                  "kind": 226,
+                                  "type": "BinaryExpression"
+                                }
+                              ],
+                              "children": [
+                                "deepmerge",
+                                "DEFAULT_CHART_OPTIONS",
+                                {
+                                  "raw": "this.#inputs.options() || {}",
+                                  "kind": 226,
+                                  "type": "BinaryExpression",
+                                  "children": [
+                                    {
+                                      "kind": "callExpression",
+                                      "expression": {
+                                        "raw": "this.#inputs.options",
+                                        "kind": 211,
+                                        "type": "PropertyAccessExpression"
+                                      },
+                                      "arguments": [],
+                                      "children": [
+                                        {
+                                          "raw": "this.#inputs.options",
+                                          "kind": 211,
+                                          "type": "PropertyAccessExpression",
+                                          "children": [
+                                            {
+                                              "raw": "this.#inputs",
+                                              "kind": 211,
+                                              "type": "PropertyAccessExpression",
+                                              "children": [
+                                                {
+                                                  "raw": "this",
+                                                  "kind": 110,
+                                                  "type": "ThisKeyword"
+                                                },
+                                                {
+                                                  "raw": "#inputs",
+                                                  "kind": 81,
+                                                  "type": "PrivateIdentifier"
+                                                }
+                                              ]
+                                            },
+                                            "options"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "raw": "||",
+                                      "kind": 57,
+                                      "type": "BarBarToken"
+                                    },
+                                    {}
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "raw": "this.#chart.initialise(this.#element, this.type(), options, this.seriesOptions() || {}, this.#inputs.id());",
+                  "kind": 244,
+                  "type": "ExpressionStatement",
+                  "children": [
+                    {
+                      "kind": "callExpression",
+                      "expression": {
+                        "raw": "this.#chart.initialise",
+                        "kind": 211,
+                        "type": "PropertyAccessExpression"
+                      },
+                      "arguments": [
+                        {
+                          "raw": "this.#element",
+                          "kind": 211,
+                          "type": "PropertyAccessExpression"
+                        },
+                        {
+                          "kind": "callExpression",
+                          "expression": {
+                            "raw": "this.type",
+                            "kind": 211,
+                            "type": "PropertyAccessExpression"
+                          },
+                          "arguments": []
+                        },
+                        "options",
+                        {
+                          "raw": "this.seriesOptions() || {}",
+                          "kind": 226,
+                          "type": "BinaryExpression"
+                        },
+                        {
+                          "kind": "callExpression",
+                          "expression": {
+                            "raw": "this.#inputs.id",
+                            "kind": 211,
+                            "type": "PropertyAccessExpression"
+                          },
+                          "arguments": []
+                        }
+                      ],
+                      "children": [
+                        {
+                          "raw": "this.#chart.initialise",
+                          "kind": 211,
+                          "type": "PropertyAccessExpression",
+                          "children": [
+                            {
+                              "raw": "this.#chart",
+                              "kind": 211,
+                              "type": "PropertyAccessExpression",
+                              "children": [
+                                {
+                                  "raw": "this",
+                                  "kind": 110,
+                                  "type": "ThisKeyword"
+                                },
+                                {
+                                  "raw": "#chart",
+                                  "kind": 81,
+                                  "type": "PrivateIdentifier"
+                                }
+                              ]
+                            },
+                            "initialise"
+                          ]
+                        },
+                        {
+                          "raw": "this.#element",
+                          "kind": 211,
+                          "type": "PropertyAccessExpression",
+                          "children": [
+                            {
+                              "raw": "this",
+                              "kind": 110,
+                              "type": "ThisKeyword"
+                            },
+                            {
+                              "raw": "#element",
+                              "kind": 81,
+                              "type": "PrivateIdentifier"
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "callExpression",
+                          "expression": {
+                            "raw": "this.type",
+                            "kind": 211,
+                            "type": "PropertyAccessExpression"
+                          },
+                          "arguments": [],
+                          "children": [
+                            {
+                              "raw": "this.type",
+                              "kind": 211,
+                              "type": "PropertyAccessExpression",
+                              "children": [
+                                {
+                                  "raw": "this",
+                                  "kind": 110,
+                                  "type": "ThisKeyword"
+                                },
+                                "type"
+                              ]
+                            }
+                          ]
+                        },
+                        "options",
+                        {
+                          "raw": "this.seriesOptions() || {}",
+                          "kind": 226,
+                          "type": "BinaryExpression",
+                          "children": [
+                            {
+                              "kind": "callExpression",
+                              "expression": {
+                                "raw": "this.seriesOptions",
+                                "kind": 211,
+                                "type": "PropertyAccessExpression"
+                              },
+                              "arguments": [],
+                              "children": [
+                                {
+                                  "raw": "this.seriesOptions",
+                                  "kind": 211,
+                                  "type": "PropertyAccessExpression",
+                                  "children": [
+                                    {
+                                      "raw": "this",
+                                      "kind": 110,
+                                      "type": "ThisKeyword"
+                                    },
+                                    "seriesOptions"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "raw": "||",
+                              "kind": 57,
+                              "type": "BarBarToken"
+                            },
+                            {}
+                          ]
+                        },
+                        {
+                          "kind": "callExpression",
+                          "expression": {
+                            "raw": "this.#inputs.id",
+                            "kind": 211,
+                            "type": "PropertyAccessExpression"
+                          },
+                          "arguments": [],
+                          "children": [
+                            {
+                              "raw": "this.#inputs.id",
+                              "kind": 211,
+                              "type": "PropertyAccessExpression",
+                              "children": [
+                                {
+                                  "raw": "this.#inputs",
+                                  "kind": 211,
+                                  "type": "PropertyAccessExpression",
+                                  "children": [
+                                    {
+                                      "raw": "this",
+                                      "kind": 110,
+                                      "type": "ThisKeyword"
+                                    },
+                                    {
+                                      "raw": "#inputs",
+                                      "kind": 81,
+                                      "type": "PrivateIdentifier"
+                                    }
+                                  ]
+                                },
+                                "id"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "kind": "method",
           "name": "ngOnDestroy",
           "parameters": [],
-          "signature": "ngOnDestroy(): void"
+          "signature": "ngOnDestroy(): void",
+          "children": [
+            "ngOnDestroy",
+            {
+              "raw": "{\n    this.#chart.remove();\n  }",
+              "kind": 241,
+              "type": "Block",
+              "children": [
+                {
+                  "raw": "this.#chart.remove();",
+                  "kind": 244,
+                  "type": "ExpressionStatement",
+                  "children": [
+                    {
+                      "kind": "callExpression",
+                      "expression": {
+                        "raw": "this.#chart.remove",
+                        "kind": 211,
+                        "type": "PropertyAccessExpression"
+                      },
+                      "arguments": [],
+                      "children": [
+                        {
+                          "raw": "this.#chart.remove",
+                          "kind": 211,
+                          "type": "PropertyAccessExpression",
+                          "children": [
+                            {
+                              "raw": "this.#chart",
+                              "kind": 211,
+                              "type": "PropertyAccessExpression",
+                              "children": [
+                                {
+                                  "raw": "this",
+                                  "kind": 110,
+                                  "type": "ThisKeyword"
+                                },
+                                {
+                                  "raw": "#chart",
+                                  "kind": 81,
+                                  "type": "PrivateIdentifier"
+                                }
+                              ]
+                            },
+                            "remove"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

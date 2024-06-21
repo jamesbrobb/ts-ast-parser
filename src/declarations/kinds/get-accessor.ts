@@ -1,6 +1,5 @@
 import * as ts from "typescript";
 import {getModifiers, Modifiers} from "./modifiers";
-import {getText} from "../../utilities";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
 import {Parser} from "../declaration-parser";
@@ -13,13 +12,11 @@ export type GetAccessor = {
 
 
 export function getGetAccessorDeclaration(node: ts.GetAccessorDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): GetAccessor {
-
-  const modifiers = getModifiers(node, sourceFile, parser) || {};
-
+  // TODO - add props from ts.FunctionLikeDeclarationBase and ts.SignatureDeclarationBase
   return {
     kind: DeclarationKind.GETTER,
-    name: getText(node.name, sourceFile),
-    type: node.type ? getText(node.type, sourceFile) : undefined,
-    ...modifiers
+    name: parser.parse(node.name, sourceFile),
+    type: parser.parse(node.type, sourceFile),
+    ...(getModifiers(node, sourceFile, parser) || {})
   };
 }
