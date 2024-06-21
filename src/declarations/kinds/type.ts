@@ -1,6 +1,6 @@
 import * as ts from "typescript";
 import {getModifiers, Modifiers} from "./modifiers";
-import {getPropertySignature, PropertySignature} from "./property";
+import {PropertySignature} from "./property";
 import {Declaration} from "../declaration-types";
 import {DeclarationKind} from "../declaration-kind";
 import {Parser} from "../declaration-parser";
@@ -16,6 +16,7 @@ export type TypeParameter = {
 
 export type TypeReference = {
   name: string,
+  // typeArguments?: NodeArray<TypeNode> // TODO - check this out
   raw: string
 } & Declaration<DeclarationKind.TYPE_REFERENCE>
 
@@ -68,23 +69,20 @@ export function getExpressionWithTypeArguments(node: ts.ExpressionWithTypeArgume
     return {
       kind: DeclarationKind.EXPRESSION_WITH_TYPE_ARGUMENTS,
       expression: parser.parse(node.expression, sourceFile),
-      typeArguments: node.typeArguments ? parser.parse(node.typeArguments, sourceFile) : undefined,
+      typeArguments: parser.parse(node.typeArguments, sourceFile),
       raw: node.getText(sourceFile)
     }
 }
 
 
 export function getTypeAliasDeclaration(node: ts.TypeAliasDeclaration, sourceFile: ts.SourceFile, parser: Parser<any>): TypeAliasDeclaration {
-
-  const modifiers = getModifiers(node, sourceFile, parser) || {};
-
   return {
     kind: DeclarationKind.TYPE_ALIAS,
     name: parser.parse(node.name, sourceFile),
-    typeParameters: node.typeParameters ? node.typeParameters.map(typeParam => getTypeParameterDeclaration(typeParam, sourceFile, parser)) : undefined,
+    typeParameters: parser.parse(node.typeParameters, sourceFile),
     type: getType(node.type, sourceFile, parser),
-    raw: node.getText(sourceFile),
-    ...modifiers
+    ...(getModifiers(node, sourceFile, parser) || {}),
+    raw: node.getText(sourceFile)
   }
 }
 
@@ -92,7 +90,8 @@ export function getTypeLiteral(node: ts.TypeLiteralNode, sourceFile: ts.SourceFi
 
   return {
     kind: DeclarationKind.TYPE_LITERAL,
-    members: node.members.map(member => {
+    members: parser.parse(node.members, sourceFile),
+    /*members: node.members.map(member => {
 
       if(ts.isPropertySignature(member)) {
         return getPropertySignature(member, sourceFile, parser);
@@ -103,16 +102,15 @@ export function getTypeLiteral(node: ts.TypeLiteralNode, sourceFile: ts.SourceFi
         nodeType: ts.SyntaxKind[member.kind],
         raw: parser.parse(member, sourceFile)
       }
-    }),
+    }),*/
     raw: node.getText(sourceFile)
   }
 }
 
 export function getTypeElement(node: ts.TypeElement, sourceFile: ts.SourceFile, parser: Parser<any>): TypeElement {
-
     return {
       kind: DeclarationKind.TYPE_ELEMENT,
-      name: node.name ? parser.parse(node.name, sourceFile) : '',
+      name: parser.parse(node.name, sourceFile),
       optional: !!node.questionToken
     }
 }
